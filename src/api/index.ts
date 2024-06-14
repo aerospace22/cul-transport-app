@@ -7,7 +7,7 @@ const baseURLS = {
 
 const instance: AxiosInstance = axios.create({
   // @ts-ignore
-  baseURL: baseURLS["local"],
+  baseURL: baseURLS["prod"],
 });
 
 instance.interceptors.request.use(

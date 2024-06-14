@@ -1,12 +1,16 @@
 import httpClient from "@/api/index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
 
 export const AuthService = {
   login: async function (credentials: any) {
     return await httpClient
       .post("/auth/login", credentials)
-      .then((response) => {
+      .then(async (response) => {
         console.log(response.data);
+
+        await AsyncStorage.setItem("user", JSON.stringify(response.data.user));
+        await AsyncStorage.setItem("token", response.data.accessToken);
 
         return true;
       })

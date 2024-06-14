@@ -1,4 +1,5 @@
 import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Text, TextInput, Pressable, Image, Alert } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ImageAssets } from "@/assets/index";
@@ -31,6 +32,14 @@ export const LoginScreen: React.FC<TScreenProps> = (props) => {
       [key]: value,
     });
   };
+
+  React.useEffect(() => {
+    (async () => {
+      if ((await AsyncStorage.getItem("user")) || (await AsyncStorage.getItem("token"))) {
+        props.navigation.navigate("HOME_SCREEN");
+      }
+    })();
+  }, []);
 
   return (
     <View className="flex-1 justify-center bg-yellow-300 px-10">
