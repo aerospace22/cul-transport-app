@@ -15,7 +15,7 @@ export const AuthService = {
         return true;
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error.response?.data);
 
         Alert.alert("Invalid credentials");
       });
@@ -32,7 +32,7 @@ export const AuthService = {
         return true;
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error.response?.data);
 
         Alert.alert("Failed to create account");
       });
