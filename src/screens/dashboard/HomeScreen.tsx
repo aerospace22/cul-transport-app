@@ -70,14 +70,42 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
 
       <View className="w-full flex-1 px-2 py-5">
         <View className="flex-1">
-          <View className="bg-white pb-4" style={{ zIndex: 999 }}>
+          <View className="bg-white px-2 pb-4" style={{ zIndex: 999 }}>
             <TextInput className="w-full h-[50px] text-xs border border-gray-700 rounded px-2" placeholder="Search Destination" />
             <Text className="text-xs font-bold pt-4">Available Bus Routes:</Text>
           </View>
           <ScrollView showsVerticalScrollIndicator={false} className="flex flex-col gap-y-4 pb-[80px]">
             {busRoutes.length ? (
               busRoutes.map((route: any, index: number) => (
-                <View key={`bus-route-${index}`} className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
+                <View key={`bus-route-${index}`} className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg p-3">
+                  <View className="flex flex-row justify-between">
+                    <View>
+                      <View className="mb-2">
+                        <Text className="text-[10px] text-gray-600">FROM</Text>
+                        <Text className="text-xs text-gray-800 font-bold">{route.routeFrom}</Text>
+                      </View>
+                      <View className="mb-2">
+                        <Text className="text-[10px] text-gray-600">TO</Text>
+                        <Text className="text-xs text-gray-800 font-bold">{route.routeTo}</Text>
+                      </View>
+                      <View className="mb-2">
+                        <Pressable className="w-[150px] bg-blue-600 rounded-md items-center py-2 px-3">
+                          <Text className="text-xs text-white font-bold">BOOK TICKETS</Text>
+                        </Pressable>
+                      </View>
+                    </View>
+                    <View>
+                      <View className="mb-2">
+                        <Text className="text-[10px] text-gray-600">DEPARTURE DATETIME</Text>
+                        <Text className="text-xs text-gray-800 font-bold">{route.routeFrom}</Text>
+                      </View>
+                      <View className="mb-2">
+                        <Text className="text-[10px] text-gray-600">ARRIVAL DATETIME</Text>
+                        <Text className="text-xs text-gray-800 font-bold">{route.routeTo}</Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
               ))
             ) : (
               <View className="h-[200px] flex-1 justify-center items-center">
