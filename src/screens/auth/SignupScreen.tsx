@@ -51,29 +51,34 @@ export const SignupScreen: React.FC<TScreenProps> = (props) => {
 
         <View className="w-full flex flex-col gap-y-5 mt-4">
           <TextInput
-            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl pb-2 px-4"
+            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl px-4"
             onChangeText={(value) => setValue("firstName", value)}
             placeholder="Enter first name"
+            autoCapitalize="none"
           />
           <TextInput
-            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl pb-2 px-4"
+            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl px-4"
             onChangeText={(value) => setValue("lastName", value)}
             placeholder="Enter last name"
+            autoCapitalize="none"
           />
           <TextInput
-            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl pb-2 px-4"
+            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl px-4"
             onChangeText={(value) => setValue("email", value)}
             placeholder="Enter e-mail"
+            autoCapitalize="none"
           />
           <TextInput
-            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl pb-2 px-4"
+            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl px-4"
             onChangeText={(value) => setValue("password", value)}
             placeholder="Enter password"
+            autoCapitalize="none"
           />
           <TextInput
-            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl pb-2 px-4"
+            className="w-full h-[50px] text-sm border border-gray-700 rounded-xl px-4"
             onChangeText={(value) => setValue("passwordConfirmation", value)}
             placeholder="Enter password confirmation"
+            autoCapitalize="none"
           />
           <Pressable className="w-full h-[50px] bg-red-700 justify-center items-center rounded-xl" onPress={handleSignup}>
             <Text className="text-md text-white font-bold">CREATE ACCOUNT</Text>
