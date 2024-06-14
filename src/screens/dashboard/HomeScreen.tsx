@@ -1,9 +1,10 @@
 import React from "react";
 import moment from "moment";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { View, Text, ScrollView, TextInput } from "react-native";
+import { View, Text, ScrollView, TextInput, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { BusRoutesService } from "@/services/bus-routes.service";
 import type { TStackParamsList } from "@/types/navigation";
 
 type TScreenProps = {
@@ -12,6 +13,7 @@ type TScreenProps = {
 
 export const HomeScreen: React.FC<TScreenProps> = (props) => {
   const [user, setUser] = React.useState<any>(null);
+  const [busRoutes, setBusRoutes] = React.useState<any>([]);
   const [datetime, setDatetime] = React.useState("");
 
   const getUserData = async () => {
@@ -19,8 +21,17 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
     setUser(JSON.parse(data!));
   };
 
+  const getBusRoutes = async () => {
+    BusRoutesService.getBusRoutesList().then((data) => setBusRoutes(data));
+  };
+
+  const handleLogout = () => {
+    AsyncStorage.clear().then(() => props.navigation.navigate("LOGIN_SCREEN"));
+  };
+
   React.useEffect(() => {
     getUserData();
+    getBusRoutes();
 
     const interval = setInterval(() => {
       setDatetime(moment().format("MMMM D, Y hh:mm:ss A"));
@@ -35,8 +46,11 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
     <View className="flex-1  bg-white">
       <View className="w-full h-[200px] bg-yellow-300 p-5">
         <View className="w-full flex flex-col justify-between relative">
-          <View className="absolute top-2 right-2">
-            <AntDesign name="bells" size={24} color="black" />
+          <View className="flex flex-row gap-x-3 absolute top-2 right-2">
+            <AntDesign name="bells" size={20} color="black" />
+            <Pressable onPress={handleLogout}>
+              <AntDesign name="logout" size={20} color="black" />
+            </Pressable>
           </View>
 
           <View className="flex flex-row items-center gap-x-3">
@@ -61,11 +75,15 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
             <Text className="text-xs font-bold pt-4">Available Bus Routes:</Text>
           </View>
           <ScrollView showsVerticalScrollIndicator={false} className="flex flex-col gap-y-4 pb-[80px]">
-            <View className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
-            <View className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
-            <View className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
-            <View className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
-            <View className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
+            {busRoutes.length ? (
+              busRoutes.map((route: any, index: number) => (
+                <View key={`bus-route-${index}`} className="w-full h-[130px] bg-slate-50 border border-gray-300 rounded-lg"></View>
+              ))
+            ) : (
+              <View className="h-[200px] flex-1 justify-center items-center">
+                <Text className="text-xs text-gray-500">No routes posted at the moment</Text>
+              </View>
+            )}
           </ScrollView>
         </View>
       </View>
