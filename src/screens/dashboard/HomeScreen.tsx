@@ -97,11 +97,15 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
                     <View>
                       <View className="mb-2">
                         <Text className="text-[10px] text-gray-600">DEPARTURE DATETIME</Text>
-                        <Text className="text-xs text-gray-800 font-bold">{route.routeFrom}</Text>
+                        <Text className="text-xs text-gray-800 font-bold">
+                          {route.departureDate} {route.departureTime}
+                        </Text>
                       </View>
                       <View className="mb-2">
                         <Text className="text-[10px] text-gray-600">ARRIVAL DATETIME</Text>
-                        <Text className="text-xs text-gray-800 font-bold">{route.routeTo}</Text>
+                        <Text className="text-xs text-gray-800 font-bold">
+                          {route.arrivalDate} {route.arrivalTime}
+                        </Text>
                       </View>
                     </View>
                   </View>
