@@ -1,4 +1,6 @@
 export { WelcomeScreen } from "./WelcomeScreen";
-export { HomeScreen } from "./dashboard/HomeScreen";
+
+/**
+ * Auth
+ */
 export { LoginScreen } from "./auth/LoginScreen";
-export { SignupScreen } from "./auth/SignupScreen";
