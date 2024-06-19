@@ -3,6 +3,7 @@ import Checkbox from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, Pressable } from "react-native";
+import { Toast } from "react-native-toast-alert";
 import { BaseInput, BaseButton } from "@/components/base";
 
 export const LoginForm: React.FC = () => {
@@ -15,6 +16,10 @@ export const LoginForm: React.FC = () => {
   const goToHome = () => {
     // @ts-ignore
     navigate("HOME_SCREEN");
+  };
+
+  const handleLogin = () => {
+    Toast.warning("Connecting to server");
   };
 
   return (
