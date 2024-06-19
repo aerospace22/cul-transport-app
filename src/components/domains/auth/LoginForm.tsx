@@ -13,7 +13,7 @@ export const LoginForm: React.FC = () => {
   return (
     <View className="flex flex-col gap-y-4">
       <BaseInput placeholder="E-mail address" />
-      <BaseInput placeholder="Password" />
+      <BaseInput placeholder="Password" secureTextEntry />
 
       <View className="flex flex-row justify-between items-center">
         <View className="flex flex-row gap-x-2 items-center">
