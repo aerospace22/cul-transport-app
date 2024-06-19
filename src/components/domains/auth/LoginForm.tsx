@@ -1,5 +1,6 @@
 import React from "react";
 import Checkbox from "expo-checkbox";
+import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, Pressable } from "react-native";
 import { BaseInput, BaseButton } from "@/components/base";
@@ -9,6 +10,12 @@ export const LoginForm: React.FC = () => {
     control,
     formState: { errors },
   } = useForm();
+  const { navigate } = useNavigation();
+
+  const goToHome = () => {
+    // @ts-ignore
+    navigate("HOME_SCREEN");
+  };
 
   return (
     <View className="flex flex-col gap-y-4">
@@ -26,7 +33,7 @@ export const LoginForm: React.FC = () => {
         </Pressable>
       </View>
 
-      <BaseButton title="Log In" />
+      <BaseButton title="Log In" onPress={goToHome} />
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, Image, Pressable, ScrollView } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { View, Text, Image, Pressable, ScrollView } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { ImageAssets } from "@/assets/index";
 import { BaseButton } from "@/components/base";
@@ -22,12 +22,12 @@ export const SignupScreen: React.FC<TScreenProps> = (props) => {
         <FontAwesome name="long-arrow-left" size={24} color="black" />
       </Pressable>
 
-      <ScrollView className="flex-1">
-        <Image source={ImageAssets.brandLogo} className="w-[110px] h-[110px] mt-[80px] mb-10 mx-auto" />
-        <View className="mb-5">
-          <Text className="text-2xl font-semibold mb-2">Sign Up</Text>
-          <Text className="text-xs text-gray-700">Create your account and start your travels with us!</Text>
-        </View>
+      <Image source={ImageAssets.brandLogo} className="w-[110px] h-[110px] mt-[80px] mb-10 mx-auto" />
+      <View className="mb-5">
+        <Text className="text-2xl font-semibold mb-2">Sign Up</Text>
+        <Text className="text-xs text-gray-700">Create your account and start your travels with us!</Text>
+      </View>
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <SignupForm />
         <BaseButton title="Go to log in" classNames="bg-transparent" labelClassnames="text-blue-800 font-bold" onPress={goToLogin} />
       </ScrollView>
