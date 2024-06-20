@@ -13,7 +13,7 @@ type TScreenProps = {
 
 export const HomeScreen: React.FC<TScreenProps> = (props) => {
   const { authUser } = useAuthHook();
-  const userFullname = `${authUser?.firstName} ${authUser?.lastName}`;
+  const userFullname = authUser ? `${authUser?.firstName} ${authUser?.lastName}` : "User";
 
   const goToBrowseBusRoutes = () => {
     props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
