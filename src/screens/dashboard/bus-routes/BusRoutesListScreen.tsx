@@ -34,20 +34,14 @@ export const BusRoutesListScreen: React.FC<TScreenProps> = (props) => {
             <Text className="text-xs text-gray-600 mt-4">Fetching data</Text>
           </View>
         ) : (
-          <View className="flex-1 flex-col gap-y-2 justify-center items-center">
-            {/* <ActivityIndicator color="red" /> */}
-            <Text className="text-xs text-gray-600 mt-4">
-              There are no data available
-            </Text>
-          </View>
-          // <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-          //   {busRoutes.map((busRoute: any) => (
-          //     <View
-          //       className="w-full h-[200px] mb-4"
-          //       key={`bus-route-${busRoute.id}`}
-          //     ></View>
-          //   ))}
-          // </ScrollView>
+          <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+            {busRoutes.map((busRoute: any) => (
+              <View
+                className="w-full h-[200px] mb-4"
+                key={`bus-route-${busRoute.id}`}
+              ></View>
+            ))}
+          </ScrollView>
         )}
       </View>
     </BaseLayout>

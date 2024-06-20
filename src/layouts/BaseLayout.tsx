@@ -4,6 +4,7 @@ import { View, Text, Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { PageHeader } from "@/components/shared";
+import { checkAuth } from "@/utils";
 
 export const BottomNav: React.FC<{}> = (props) => {
   const ICON_COLOR = "#222";
@@ -49,6 +50,10 @@ export const BaseLayout: React.FC<{
   hasHeader?: boolean;
   headerTitle?: string;
 }> = (props) => {
+  React.useEffect(() => {
+    checkAuth();
+  }, []);
+
   return (
     <View className="flex-1 bg-slate-50 relative">
       {props.hasHeader && props.headerTitle ? (

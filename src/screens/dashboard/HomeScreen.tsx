@@ -4,6 +4,7 @@ import { View, Text, Pressable, ScrollView } from "react-native";
 import { BaseInput, BaseButton } from "@/components/base";
 import { BaseLayout } from "@/layouts";
 import { useAuthHook } from "@/hooks";
+import { checkAuth } from "@/utils";
 import type { TStackParamsList } from "@/types/navigation";
 
 type TScreenProps = {
@@ -17,6 +18,10 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
   const goToBrowseBusRoutes = () => {
     props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
   };
+
+  React.useEffect(() => {
+    checkAuth();
+  }, []);
 
   return (
     <BaseLayout>
