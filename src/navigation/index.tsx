@@ -4,7 +4,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationService } from "@/services";
 import type { TStackParamsList } from "@/types/navigation";
 
-import { WelcomeScreen, LoginScreen, SignupScreen, HomeScreen } from "@/screens";
+import {
+  WelcomeScreen,
+  LoginScreen,
+  SignupScreen,
+  HomeScreen,
+  BusRoutesListScreen,
+} from "@/screens";
 
 const { Navigator, Screen } = createStackNavigator<TStackParamsList>();
 
@@ -20,6 +26,7 @@ export const AppNavigation: React.FC = () => {
         <Screen name="LOGIN_SCREEN" component={LoginScreen} />
         <Screen name="SIGNUP_SCREEN" component={SignupScreen} />
         <Screen name="HOME_SCREEN" component={HomeScreen} />
+        <Screen name="BUS_ROUTES_LIST_SCREEN" component={BusRoutesListScreen} />
       </Navigator>
     </NavigationContainer>
   );

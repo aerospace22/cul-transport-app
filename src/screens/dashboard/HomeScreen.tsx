@@ -1,6 +1,6 @@
 import React from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import { BaseInput, BaseButton } from "@/components/base";
 import { BaseLayout } from "@/layouts";
 import type { TStackParamsList } from "@/types/navigation";
@@ -10,6 +10,10 @@ type TScreenProps = {
 };
 
 export const HomeScreen: React.FC<TScreenProps> = (props) => {
+  const goToBrowseBusRoutes = () => {
+    props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
+  };
+
   return (
     <BaseLayout>
       <View className="flex-1 bg-slate-50">
@@ -24,7 +28,12 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
 
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
           <View className="w-full flex flex-col bg-red-700 py-3 pb-6 px-5">
-            <Text className="text-white font-bold mb-5">Search for bus routes</Text>
+            <View className="flex flex-row justify-between items-start">
+              <Text className="text-white font-bold mb-5">Search for bus routes</Text>
+              <Pressable onPress={goToBrowseBusRoutes}>
+                <Text className="text-xs text-white underline">Browse All</Text>
+              </Pressable>
+            </View>
             <BaseInput
               label="From"
               labelClassnames="text-white"

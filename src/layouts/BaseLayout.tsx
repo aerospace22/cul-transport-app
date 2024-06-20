@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { Foundation } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { PageHeader } from "@/components/shared";
 
 export const BottomNav: React.FC<{}> = (props) => {
   const ICON_COLOR = "#222";
@@ -44,9 +44,17 @@ export const BottomNav: React.FC<{}> = (props) => {
   );
 };
 
-export const BaseLayout: React.FC<{ children: React.ReactNode }> = (props) => {
+export const BaseLayout: React.FC<{
+  children: React.ReactNode;
+  hasHeader?: boolean;
+  headerTitle?: string;
+}> = (props) => {
   return (
     <View className="flex-1 relative">
+      {props.hasHeader && props.headerTitle ? (
+        <PageHeader title={props.headerTitle} />
+      ) : null}
+
       <View className="flex-1">{props.children}</View>
 
       <BottomNav />
