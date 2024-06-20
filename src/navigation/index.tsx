@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationService } from "@/services";
 import type { TStackParamsList } from "@/types/navigation";
 
 import { WelcomeScreen, LoginScreen, SignupScreen, HomeScreen } from "@/screens";
@@ -13,7 +14,7 @@ const navigationOpts = {
 
 export const AppNavigation: React.FC = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={NavigationService.navigationRef}>
       <Navigator screenOptions={navigationOpts} initialRouteName="SIGNUP_SCREEN">
         <Screen name="WELCOME_SCREEN" component={WelcomeScreen} />
         <Screen name="LOGIN_SCREEN" component={LoginScreen} />

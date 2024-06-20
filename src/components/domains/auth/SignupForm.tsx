@@ -1,6 +1,5 @@
 import React from "react";
 import Checkbox from "expo-checkbox";
-import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text } from "react-native";
 import { Toast } from "react-native-toast-alert";
@@ -13,7 +12,6 @@ export const SignupForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { navigate } = useNavigation();
 
   const [loading, setLoading] = React.useState<boolean>(false);
   const [checked, setChecked] = React.useState<boolean>(false);
@@ -25,10 +23,7 @@ export const SignupForm: React.FC = () => {
 
     setLoading(true);
 
-    return await AuthService.signupAccount(formData, setLoading).then(() =>
-      // @ts-ignore
-      navigate("LOGIN_SCREEN")
-    );
+    return await AuthService.signupAccount(formData, setLoading);
   });
 
   return (

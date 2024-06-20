@@ -1,10 +1,9 @@
 import React from "react";
 import Checkbox from "expo-checkbox";
-import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, Pressable } from "react-native";
-import { Toast } from "react-native-toast-alert";
 import { BaseInput, BaseButton } from "@/components/base";
+import { AuthService } from "@/services";
 
 export const LoginForm: React.FC = () => {
   const {
@@ -12,15 +11,13 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { navigate } = useNavigation();
 
-  const goToHome = () => {
-    // @ts-ignore
-    navigate("HOME_SCREEN");
-  };
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const handleLogin = handleSubmit(async (formData) => {
-    console.log(formData);
+    setLoading(true);
+
+    return AuthService.loginAccount(formData, setLoading);
   });
 
   return (
@@ -74,7 +71,12 @@ export const LoginForm: React.FC = () => {
         </Pressable>
       </View>
 
-      <BaseButton title="Log In" onPress={handleLogin} />
+      <BaseButton
+        title={loading ? "..." : "LOG IN"}
+        onPress={handleLogin}
+        classNames={loading ? "bg-red-400" : ""}
+        disabled={loading}
+      />
     </View>
   );
 };
