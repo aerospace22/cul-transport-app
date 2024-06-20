@@ -3,6 +3,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { View, Text, Pressable, ScrollView } from "react-native";
 import { BaseInput, BaseButton } from "@/components/base";
 import { BaseLayout } from "@/layouts";
+import { useAuthHook } from "@/hooks";
 import type { TStackParamsList } from "@/types/navigation";
 
 type TScreenProps = {
@@ -10,6 +11,9 @@ type TScreenProps = {
 };
 
 export const HomeScreen: React.FC<TScreenProps> = (props) => {
+  const { authUser } = useAuthHook();
+  const userFullname = `${authUser.firstName} ${authUser.lastName}`;
+
   const goToBrowseBusRoutes = () => {
     props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
   };
@@ -19,7 +23,7 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
       <View className="flex-1 bg-slate-50">
         <View className="flex flex-row justify-between py-2 px-5 mt-3 mb-4">
           <View>
-            <Text className="text-lg font-semibold">Hello, Noah Policarpio</Text>
+            <Text className="text-lg font-semibold">Hello, {userFullname}</Text>
             <Text className="text-xs text-gray-600">Book your travel now!</Text>
           </View>
 

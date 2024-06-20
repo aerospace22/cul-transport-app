@@ -50,7 +50,7 @@ export const BaseLayout: React.FC<{
   headerTitle?: string;
 }> = (props) => {
   return (
-    <View className="flex-1 relative">
+    <View className="flex-1 bg-slate-50 relative">
       {props.hasHeader && props.headerTitle ? (
         <PageHeader title={props.headerTitle} />
       ) : null}
