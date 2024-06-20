@@ -15,13 +15,20 @@ export const SignupForm: React.FC = () => {
   } = useForm();
   const { navigate } = useNavigation();
 
+  const [loading, setLoading] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
+
   const handleSignup = handleSubmit(async (formData) => {
     if (formData.password !== formData.confirmPassword) {
       return Toast.error("Passwords must match");
     }
 
-    // @ts-ignore
-    return await AuthService.signupAccount(formData).then(() => navigate("LOGIN_SCREEN"));
+    setLoading(true);
+
+    return await AuthService.signupAccount(formData, setLoading).then(() =>
+      // @ts-ignore
+      navigate("LOGIN_SCREEN")
+    );
   });
 
   return (
@@ -92,6 +99,8 @@ export const SignupForm: React.FC = () => {
               value={field.value}
               onChangeText={field.onChange}
               onBlur={field.onBlur}
+              textContentType="oneTimeCode"
+              secureTextEntry
             />
           )}
         />
@@ -111,6 +120,8 @@ export const SignupForm: React.FC = () => {
               value={field.value}
               onChangeText={field.onChange}
               onBlur={field.onBlur}
+              textContentType="oneTimeCode"
+              secureTextEntry
             />
           )}
         />
@@ -120,14 +131,23 @@ export const SignupForm: React.FC = () => {
       </View>
 
       <View className="flex flex-row gap-x-2 items-center">
-        <Checkbox className="border border-gray-400 rounded h-[15px] w-[15px]" />
+        <Checkbox
+          className="border border-gray-400 rounded h-[15px] w-[15px]"
+          value={checked}
+          onValueChange={setChecked}
+        />
         <Text className="text-[10px] text-gray-600 font-medium">
           By checking, I agree to the{" "}
           <Text className="text-blue-700 underline">policy</Text> and{" "}
           <Text className="text-blue-700 underline">terms & condition</Text>
         </Text>
       </View>
-      <BaseButton title="Sign Up" onPress={handleSignup} />
+      <BaseButton
+        title={loading ? "..." : "Sign Up"}
+        onPress={handleSignup}
+        classNames={loading || !checked ? "bg-red-400" : ""}
+        disabled={loading || !checked}
+      />
     </View>
   );
 };
