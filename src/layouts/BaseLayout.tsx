@@ -23,19 +23,19 @@ export const BottomNav: React.FC<{}> = (props) => {
           <Text className="text-xs">Home</Text>
         </View>
       </Pressable>
-      <Pressable onPress={() => handleRedirect("CUSTOMER_HOME_SCREEN")}>
+      <Pressable>
         <View className="flex flex-col items-center gap-1">
           <Ionicons name="ticket-outline" size={18} color={ICON_COLOR} />
           <Text className="text-xs">Tickets</Text>
         </View>
       </Pressable>
-      <Pressable onPress={() => handleRedirect("CUSTOMER_HOME_SCREEN")}>
+      <Pressable>
         <View className="flex flex-col items-center gap-1">
           <Feather name="map-pin" size={18} color={ICON_COLOR} />
           <Text className="text-xs">Terminals</Text>
         </View>
       </Pressable>
-      <Pressable onPress={() => handleRedirect("CUSTOMER_HOME_SCREEN")}>
+      <Pressable>
         <View className="flex flex-col items-center gap-1">
           <Feather name="user" size={18} color={ICON_COLOR} />
           <Text className="text-xs">Account</Text>
