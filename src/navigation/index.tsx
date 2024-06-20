@@ -14,7 +14,7 @@ const navigationOpts = {
 export const AppNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Navigator screenOptions={navigationOpts} initialRouteName="WELCOME_SCREEN">
+      <Navigator screenOptions={navigationOpts} initialRouteName="SIGNUP_SCREEN">
         <Screen name="WELCOME_SCREEN" component={WelcomeScreen} />
         <Screen name="LOGIN_SCREEN" component={LoginScreen} />
         <Screen name="SIGNUP_SCREEN" component={SignupScreen} />

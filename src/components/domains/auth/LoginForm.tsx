@@ -9,6 +9,7 @@ import { BaseInput, BaseButton } from "@/components/base";
 export const LoginForm: React.FC = () => {
   const {
     control,
+    handleSubmit,
     formState: { errors },
   } = useForm();
   const { navigate } = useNavigation();
@@ -18,14 +19,47 @@ export const LoginForm: React.FC = () => {
     navigate("HOME_SCREEN");
   };
 
-  const handleLogin = () => {
-    Toast.warning("Connecting to server");
-  };
+  const handleLogin = handleSubmit(async (formData) => {
+    console.log(formData);
+  });
 
   return (
     <View className="flex flex-col gap-y-4">
-      <BaseInput placeholder="E-mail address" />
-      <BaseInput placeholder="Password" secureTextEntry />
+      <View className="flex flex-col gap-y-1">
+        <Controller
+          name="email"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <BaseInput
+              placeholder="E-mail Address"
+              value={field.value}
+              onChangeText={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
+        />
+        {errors.email && <Text className="text-xs text-red-700">Field is required</Text>}
+      </View>
+      <View className="flex flex-col gap-y-1">
+        <Controller
+          name="password"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <BaseInput
+              secureTextEntry={true}
+              placeholder="Password"
+              value={field.value}
+              onChangeText={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
+        />
+        {errors.password && (
+          <Text className="text-xs text-red-700">Field is required</Text>
+        )}
+      </View>
 
       <View className="flex flex-row justify-between items-center">
         <View className="flex flex-row gap-x-2 items-center">
@@ -34,11 +68,13 @@ export const LoginForm: React.FC = () => {
         </View>
 
         <Pressable>
-          <Text className="text-[10px] text-blue-700 font-bold">Forgot your password?</Text>
+          <Text className="text-[10px] text-blue-700 font-bold">
+            Forgot your password?
+          </Text>
         </Pressable>
       </View>
 
-      <BaseButton title="Log In" onPress={goToHome} />
+      <BaseButton title="Log In" onPress={handleLogin} />
     </View>
   );
 };
