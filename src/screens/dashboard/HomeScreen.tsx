@@ -12,7 +12,7 @@ type TScreenProps = {
 
 export const HomeScreen: React.FC<TScreenProps> = (props) => {
   const { authUser } = useAuthHook();
-  const userFullname = `${authUser.firstName} ${authUser.lastName}`;
+  const userFullname = `${authUser?.firstName} ${authUser?.lastName}`;
 
   const goToBrowseBusRoutes = () => {
     props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
@@ -69,7 +69,9 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
 
           <View className="mt-5 px-5">
             <Text className="text-sm text-black font-bold">My Recent Travels</Text>
-            <Text className="text-xs text-gray-700 text-center mt-10">No data found</Text>
+            <Text className="text-xs text-gray-700 text-center mt-10">
+              There are no data available
+            </Text>
           </View>
         </ScrollView>
       </View>

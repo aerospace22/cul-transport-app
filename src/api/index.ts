@@ -1,4 +1,9 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from "axios";
+import axios, {
+  AxiosInstance,
+  AxiosResponse,
+  AxiosError,
+  InternalAxiosRequestConfig,
+} from "axios";
 
 const baseURLS = {
   prod: "https://cul-transport-server-production.up.railway.app/api/v1",
