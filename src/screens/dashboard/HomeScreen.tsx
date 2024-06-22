@@ -25,6 +25,10 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
     props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
   };
 
+  const goToViewAllRoutes = () => {
+    props.navigation.navigate("BUS_ROUTES_LIST_SCREEN");
+  };
+
   const fetchBusRoutes = async () => {
     setLoading(true);
 
@@ -38,11 +42,8 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
   };
 
   React.useEffect(() => {
-    fetchBusRoutes();
-  }, []);
-
-  React.useEffect(() => {
     checkAuth();
+    fetchBusRoutes();
   }, []);
 
   return (
@@ -95,66 +96,71 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
           </View>
 
           <View className="mt-5 px-5">
-            <Text className="text-sm text-black font-bold">My Recent Posted Routes</Text>
-            {busRoutes.length ? (
-              busRoutes.splice(0, 3).map((busRoute: any) => (
-                <>
-                  <View
-                    className="w-full flex flex-col bg-slate-200 rounded-md p-4 mb-4"
-                    key={`bus-route-${busRoute.id}`}
-                  >
-                    <View className="flex flex-row justify-between items-end mb-2">
-                      <View>
-                        <Text className="text-[10px] font-bold mb-1">ROUTE FROM</Text>
-                        <Text className="text-[12px]">{busRoute.routeFrom}</Text>
-                      </View>
-                      <View>
-                        <Text className="text-[10px] font-bold mb-1  text-right">
-                          ROUTE TO
-                        </Text>
-                        <Text className="text-[12px] text-right">{busRoute.routeTo}</Text>
-                      </View>
+            <View className="flex flex-row justify-between mb-2">
+              <Text className="text-sm text-black font-bold mb-2">
+                Recent Posted Routes
+              </Text>
+              <Pressable onPress={goToViewAllRoutes}>
+                <Text className="text-xs text-blue-700 underline">View All</Text>
+              </Pressable>
+            </View>
+            {!loading && busRoutes.length ? (
+              busRoutes.splice(0, 5).map((busRoute: any) => (
+                <View
+                  className="w-full flex flex-col bg-slate-200 rounded-md p-4 mb-4"
+                  key={`bus-route-${busRoute.id}`}
+                >
+                  <View className="flex flex-row justify-between items-end mb-2">
+                    <View>
+                      <Text className="text-[10px] font-bold mb-1">ROUTE FROM</Text>
+                      <Text className="text-[12px]">{busRoute.routeFrom}</Text>
                     </View>
-                    <View className="flex flex-row justify-between items-end mb-2">
-                      <View>
-                        <Text className="text-[10px] font-bold mb-1">DEPARTURE DATE</Text>
-                        <Text className="text-[12px]">
-                          {formatDate(busRoute.departureDate)}
-                        </Text>
-                      </View>
-                      <View>
-                        <Text className="text-[10px] font-bold text-right mb-1">
-                          ARRIVAL DATE
-                        </Text>
-                        <Text className="text-[12px] text-right">
-                          {formatDate(busRoute.arrivalDate)}
-                        </Text>
-                      </View>
-                    </View>
-                    <View className="flex flex-row justify-between items-end mb-2">
-                      <View>
-                        <Text className="text-[10px] font-bold mb-1">DEPARTURE TIME</Text>
-                        <Text className="text-[12px]">{busRoute.departureTime}</Text>
-                      </View>
-                      <View>
-                        <Text className="text-[10px] font-bold mb-1  text-right">
-                          ARRIVAL TIME
-                        </Text>
-                        <Text className="text-[12px] text-right">
-                          {busRoute.arrivalTime}
-                        </Text>
-                      </View>
-                    </View>
-
-                    <View className="flex items-end border-t-2 border-gray-300 pt-4">
-                      <Pressable>
-                        <Text className="text-xs text-blue-700 font-bold">
-                          BOOK THIS ROUTE
-                        </Text>
-                      </Pressable>
+                    <View>
+                      <Text className="text-[10px] font-bold mb-1  text-right">
+                        ROUTE TO
+                      </Text>
+                      <Text className="text-[12px] text-right">{busRoute.routeTo}</Text>
                     </View>
                   </View>
-                </>
+                  <View className="flex flex-row justify-between items-end mb-2">
+                    <View>
+                      <Text className="text-[10px] font-bold mb-1">DEPARTURE DATE</Text>
+                      <Text className="text-[12px]">
+                        {formatDate(busRoute.departureDate)}
+                      </Text>
+                    </View>
+                    <View>
+                      <Text className="text-[10px] font-bold text-right mb-1">
+                        ARRIVAL DATE
+                      </Text>
+                      <Text className="text-[12px] text-right">
+                        {formatDate(busRoute.arrivalDate)}
+                      </Text>
+                    </View>
+                  </View>
+                  <View className="flex flex-row justify-between items-end mb-2">
+                    <View>
+                      <Text className="text-[10px] font-bold mb-1">DEPARTURE TIME</Text>
+                      <Text className="text-[12px]">{busRoute.departureTime}</Text>
+                    </View>
+                    <View>
+                      <Text className="text-[10px] font-bold mb-1  text-right">
+                        ARRIVAL TIME
+                      </Text>
+                      <Text className="text-[12px] text-right">
+                        {busRoute.arrivalTime}
+                      </Text>
+                    </View>
+                  </View>
+
+                  <View className="flex items-end border-t-2 border-gray-300 pt-4">
+                    <Pressable>
+                      <Text className="text-xs text-blue-700 font-bold">
+                        BOOK THIS ROUTE
+                      </Text>
+                    </Pressable>
+                  </View>
+                </View>
               ))
             ) : (
               <Text className="text-xs text-gray-700 text-center mt-10">Fetching</Text>
