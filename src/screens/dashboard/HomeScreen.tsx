@@ -153,7 +153,8 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
                     </View>
                   </View>
 
-                  <View className="flex items-end border-t-2 border-gray-300 pt-4">
+                  <View className="flex flex-row justify-between border-t-2 border-gray-300 pt-4">
+                    <Text className="text-[12px] text-right">Ticket Price: ₱575.00</Text>
                     <Pressable>
                       <Text className="text-xs text-blue-700 font-bold">
                         BOOK THIS ROUTE

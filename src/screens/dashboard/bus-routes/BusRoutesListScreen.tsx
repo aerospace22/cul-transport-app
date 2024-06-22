@@ -41,63 +41,59 @@ export const BusRoutesListScreen: React.FC<TScreenProps> = (props) => {
         ) : (
           <ScrollView className="flex-1 px-3" showsVerticalScrollIndicator={false}>
             {busRoutes.map((busRoute: any) => (
-              <>
-                <View
-                  className="w-full flex flex-col bg-slate-200 rounded-md p-4 mb-4"
-                  key={`bus-route-${busRoute.id}`}
-                >
-                  <View className="flex flex-row justify-between items-end mb-2">
-                    <View>
-                      <Text className="text-[10px] font-bold mb-1">ROUTE FROM</Text>
-                      <Text className="text-[12px]">{busRoute.routeFrom}</Text>
-                    </View>
-                    <View>
-                      <Text className="text-[10px] font-bold mb-1  text-right">
-                        ROUTE TO
-                      </Text>
-                      <Text className="text-[12px] text-right">{busRoute.routeTo}</Text>
-                    </View>
+              <View
+                className="w-full flex flex-col bg-slate-200 rounded-md p-4 mb-4"
+                key={`bus-route-${busRoute.id}`}
+              >
+                <View className="flex flex-row justify-between items-end mb-2">
+                  <View>
+                    <Text className="text-[10px] font-bold mb-1">ROUTE FROM</Text>
+                    <Text className="text-[12px]">{busRoute.routeFrom}</Text>
                   </View>
-                  <View className="flex flex-row justify-between items-end mb-2">
-                    <View>
-                      <Text className="text-[10px] font-bold mb-1">DEPARTURE DATE</Text>
-                      <Text className="text-[12px]">
-                        {formatDate(busRoute.departureDate)}
-                      </Text>
-                    </View>
-                    <View>
-                      <Text className="text-[10px] font-bold text-right mb-1">
-                        ARRIVAL DATE
-                      </Text>
-                      <Text className="text-[12px] text-right">
-                        {formatDate(busRoute.arrivalDate)}
-                      </Text>
-                    </View>
-                  </View>
-                  <View className="flex flex-row justify-between items-end mb-2">
-                    <View>
-                      <Text className="text-[10px] font-bold mb-1">DEPARTURE TIME</Text>
-                      <Text className="text-[12px]">{busRoute.departureTime}</Text>
-                    </View>
-                    <View>
-                      <Text className="text-[10px] font-bold mb-1  text-right">
-                        ARRIVAL TIME
-                      </Text>
-                      <Text className="text-[12px] text-right">
-                        {busRoute.arrivalTime}
-                      </Text>
-                    </View>
-                  </View>
-
-                  <View className="flex items-end border-t-2 border-gray-300 pt-4">
-                    <Pressable>
-                      <Text className="text-xs text-blue-700 font-bold">
-                        BOOK THIS ROUTE
-                      </Text>
-                    </Pressable>
+                  <View>
+                    <Text className="text-[10px] font-bold mb-1  text-right">
+                      ROUTE TO
+                    </Text>
+                    <Text className="text-[12px] text-right">{busRoute.routeTo}</Text>
                   </View>
                 </View>
-              </>
+                <View className="flex flex-row justify-between items-end mb-2">
+                  <View>
+                    <Text className="text-[10px] font-bold mb-1">DEPARTURE DATE</Text>
+                    <Text className="text-[12px]">
+                      {formatDate(busRoute.departureDate)}
+                    </Text>
+                  </View>
+                  <View>
+                    <Text className="text-[10px] font-bold text-right mb-1">
+                      ARRIVAL DATE
+                    </Text>
+                    <Text className="text-[12px] text-right">
+                      {formatDate(busRoute.arrivalDate)}
+                    </Text>
+                  </View>
+                </View>
+                <View className="flex flex-row justify-between items-end mb-2">
+                  <View>
+                    <Text className="text-[10px] font-bold mb-1">DEPARTURE TIME</Text>
+                    <Text className="text-[12px]">{busRoute.departureTime}</Text>
+                  </View>
+                  <View>
+                    <Text className="text-[10px] font-bold mb-1  text-right">
+                      ARRIVAL TIME
+                    </Text>
+                    <Text className="text-[12px] text-right">{busRoute.arrivalTime}</Text>
+                  </View>
+                </View>
+
+                <View className="flex items-end border-t-2 border-gray-300 pt-4">
+                  <Pressable>
+                    <Text className="text-xs text-blue-700 font-bold">
+                      BOOK THIS ROUTE
+                    </Text>
+                  </Pressable>
+                </View>
+              </View>
             ))}
           </ScrollView>
         )}
