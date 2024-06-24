@@ -1,37 +1,8 @@
 import React from "react";
-import { View, Text, Pressable, Image } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { ImageAssets } from "@/assets/index";
-import type { TStackParamsList } from "@/types/navigation";
+import { LinearGradient } from "expo-linear-gradient";
 
-type TScreenProps = {
-  navigation: StackNavigationProp<TStackParamsList, "WELCOME_SCREEN">;
-};
-
-export const WelcomeScreen: React.FC<TScreenProps> = (props) => {
-  const goToLogin = () => {
-    props.navigation.navigate("LOGIN_SCREEN");
-  };
-
-  const goToSignup = () => {
-    props.navigation.navigate("SIGNUP_SCREEN");
-  };
-
+export const WelcomeScreen: React.FC = () => {
   return (
-    <View className="flex-1 justify-between items-center bg-slate-50">
-      <Image source={ImageAssets.brandLogo} className="w-[230px] h-[230px] mt-[80px]" />
-      {/* <Text className="text-2xl text-gray-900 font-bold mt-[30px]">Book your trip with us!</Text> */}
-
-      <View className="flex-1 justify-end w-full mx-auto pb-5 px-4">
-        <View className="flex flex-col gap-y-3">
-          <Pressable className="bg-red-700 border-red-700 rounded py-4 px-2" onPress={goToLogin}>
-            <Text className="self-center text-white">Log In</Text>
-          </Pressable>
-          <Pressable className="border border-red-700 rounded py-4 px-2" onPress={goToSignup}>
-            <Text className="self-center">Sign Up</Text>
-          </Pressable>
-        </View>
-      </View>
-    </View>
+    <LinearGradient className="flex-1" colors={["#e32f22", "#d94d43"]}></LinearGradient>
   );
 };

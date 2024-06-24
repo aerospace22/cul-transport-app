@@ -34,7 +34,8 @@
     "react-native-toast-alert": "^0.2.2",
     "zustand": "^4.5.2",
     "expo-checkbox": "~3.0.0",
-    "expo-splash-screen": "~0.27.5"
+    "expo-splash-screen": "~0.27.5",
+    "expo-linear-gradient": "~13.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
