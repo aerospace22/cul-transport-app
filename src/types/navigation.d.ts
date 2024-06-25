@@ -1,7 +1,7 @@
-export type TStackParamsList = {
+export type StackParamsList = {
   WELCOME_SCREEN: undefined;
-  LOGIN_SCREEN: undefined;
   SIGNUP_SCREEN: undefined;
-  HOME_SCREEN: undefined;
-  BUS_ROUTES_LIST_SCREEN: undefined;
+  LOGIN_SCREEN: undefined;
+  REQUEST_OTP_SCREEN: undefined;
+  VERIFY_OTP_SCREEN: undefined;
 };

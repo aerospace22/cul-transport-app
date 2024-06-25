@@ -26,6 +26,10 @@ export const SignupForm: React.FC = () => {
     return await AuthService.signupAccount(formData, setLoading);
   });
 
+  const handleToggleCheckbox = () => {
+    setChecked((prevState) => !prevState);
+  };
+
   return (
     <View className="flex flex-col gap-y-4">
       <View className="flex flex-col gap-y-1">
@@ -62,6 +66,25 @@ export const SignupForm: React.FC = () => {
           )}
         />
         {errors.lastName && (
+          <Text className="text-xs text-red-700">Field is required</Text>
+        )}
+      </View>
+
+      <View className="flex flex-col gap-y-1">
+        <Controller
+          name="contactNo"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <BaseInput
+              placeholder="Phone Number"
+              value={field.value}
+              onChangeText={field.onChange}
+              onBlur={field.onBlur}
+            />
+          )}
+        />
+        {errors.contactNo && (
           <Text className="text-xs text-red-700">Field is required</Text>
         )}
       </View>
@@ -131,10 +154,13 @@ export const SignupForm: React.FC = () => {
           value={checked}
           onValueChange={setChecked}
         />
-        <Text className="text-[10px] text-gray-600 font-medium">
+        <Text
+          className="text-[12px] text-gray-600 font-medium"
+          onPress={handleToggleCheckbox}
+        >
           By checking, I agree to the{" "}
-          <Text className="text-blue-700 underline">policy</Text> and{" "}
-          <Text className="text-blue-700 underline">terms & condition</Text>
+          <Text className="text-blue-700 underline">Policy</Text> and &nbsp;
+          <Text className="text-blue-700 underline">Terms & Condition</Text>
         </Text>
       </View>
       <BaseButton

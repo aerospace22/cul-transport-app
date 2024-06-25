@@ -5,7 +5,7 @@ export const WelcomeLayout: React.FC<{
   children: React.ReactNode;
 }> = (props) => {
   return (
-    <LinearGradient className="flex-1" colors={["#e32f22", "#d94d43", "#f25549"]}>
+    <LinearGradient className="flex-1" colors={["#f7d634", "#f25549"]}>
       {props.children}
     </LinearGradient>
   );

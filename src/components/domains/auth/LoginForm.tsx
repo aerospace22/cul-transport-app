@@ -1,5 +1,6 @@
 import React from "react";
 import Checkbox from "expo-checkbox";
+import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text, Pressable } from "react-native";
 import { BaseInput, BaseButton } from "@/components/base";
@@ -11,14 +12,25 @@ export const LoginForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { navigate } = useNavigation();
 
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
 
   const handleLogin = handleSubmit(async (formData) => {
     setLoading(true);
 
     return AuthService.loginAccount(formData, setLoading);
   });
+
+  const handleToggleCheckbox = () => {
+    setChecked((prevState) => !prevState);
+  };
+
+  const goToRequestOtp = () => {
+    // @ts-ignore
+    return navigate("REQUEST_OTP_SCREEN");
+  };
 
   return (
     <View className="flex flex-col gap-y-4">
@@ -60,14 +72,21 @@ export const LoginForm: React.FC = () => {
 
       <View className="flex flex-row justify-between items-center">
         <View className="flex flex-row gap-x-2 items-center">
-          <Checkbox className="border border-gray-400 rounded h-[15px] w-[15px]" />
-          <Text className="text-[10px] text-gray-600 font-medium">Remember Me</Text>
+          <Checkbox
+            className="border border-gray-400 rounded h-[15px] w-[15px]"
+            value={checked}
+            onValueChange={setChecked}
+          />
+          <Text
+            className="text-xs text-gray-600 font-medium"
+            onPress={handleToggleCheckbox}
+          >
+            Remember Me
+          </Text>
         </View>
 
-        <Pressable>
-          <Text className="text-[10px] text-blue-700 font-bold">
-            Forgot your password?
-          </Text>
+        <Pressable onPress={goToRequestOtp}>
+          <Text className="text-xs text-blue-700 font-bold">Forgot your password?</Text>
         </Pressable>
       </View>
 
