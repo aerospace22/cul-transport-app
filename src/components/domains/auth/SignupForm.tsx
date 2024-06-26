@@ -1,5 +1,6 @@
 import React from "react";
 import Checkbox from "expo-checkbox";
+import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
 import { View, Text } from "react-native";
 import { Toast } from "react-native-toast-alert";
@@ -12,6 +13,7 @@ export const SignupForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const { navigate } = useNavigation();
 
   const [loading, setLoading] = React.useState<boolean>(false);
   const [checked, setChecked] = React.useState<boolean>(false);
@@ -30,9 +32,16 @@ export const SignupForm: React.FC = () => {
     setChecked((prevState) => !prevState);
   };
 
+  const goToSignUp = () => {
+    // @ts-ignore
+    return navigate("LOGIN_SCREEN");
+  };
+
   return (
     <View className="flex flex-col gap-y-4">
       <View className="flex flex-col gap-y-1">
+        <Text className="font-bold mb-5">Please input and provide your details</Text>
+
         <Controller
           name="firstName"
           control={control}
@@ -163,12 +172,17 @@ export const SignupForm: React.FC = () => {
           <Text className="text-blue-700 underline">Terms & Condition</Text>
         </Text>
       </View>
+
       <BaseButton
         title={loading ? "..." : "Sign Up"}
         onPress={handleSignup}
         classNames={loading || !checked ? "bg-red-400" : ""}
         disabled={loading || !checked}
       />
+
+      <Text className="text-center" onPress={goToSignUp}>
+        Already have an account? <Text className="text-blue-700 underline">Log In</Text>
+      </Text>
     </View>
   );
 };

@@ -32,6 +32,11 @@ export const LoginForm: React.FC = () => {
     return navigate("REQUEST_OTP_SCREEN");
   };
 
+  const goToSignUp = () => {
+    // @ts-ignore
+    return navigate("SIGNUP_SCREEN");
+  };
+
   return (
     <View className="flex flex-col gap-y-4">
       <View className="flex flex-col gap-y-1">
@@ -96,6 +101,10 @@ export const LoginForm: React.FC = () => {
         classNames={loading ? "bg-red-400" : ""}
         disabled={loading}
       />
+
+      <Text className="text-center" onPress={goToSignUp}>
+        Don't have an account? <Text className="text-blue-700 underline">Sign Up</Text>
+      </Text>
     </View>
   );
 };
