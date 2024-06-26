@@ -1,27 +1,12 @@
-import React from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useAuthStore } from "@/store";
 
 export const useAuthHook = () => {
-  const [authData, setAuthData] = React.useState<any>({
-    user: null,
-    accessToken: null,
-  });
+  const { GET_TOKEN, GET_USER } = useAuthStore();
 
-  const retrieveData = async () => {
-    const user = await AsyncStorage.getItem("authUser");
-    const accessToken = await AsyncStorage.getItem("authToken");
-
-    // @ts-ignore
-    setAuthData({ user: JSON.parse(user), accessToken });
-  };
-
-  React.useEffect(() => {
-    retrieveData();
-  }, []);
+  const isAuthenticated = Boolean(GET_TOKEN() !== undefined && GET_USER() !== undefined);
 
   return {
-    isAuthenticated: false,
-    authUser: authData.user,
-    authToken: authData.accessToken,
+    isAuthenticated,
+    user: GET_USER(),
   };
 };

@@ -20,7 +20,7 @@ export const RequestOtpForm: React.FC = () => {
   };
 
   return (
-    <View className="flex flex-col gap-y-4">
+    <View className="flex flex-col gap-y-4 mt-1">
       <View className="flex flex-col gap-y-1">
         <Controller
           name="email"

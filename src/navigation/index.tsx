@@ -10,6 +10,7 @@ import {
   LoginScreen,
   RequestOtpScreen,
   VerifyOtpScreen,
+  HomeScreen,
 } from "@/screens";
 
 const { Navigator, Screen } = createStackNavigator<StackParamsList>();
@@ -27,6 +28,7 @@ export const AppNavigation: React.FC = () => {
         <Screen name="LOGIN_SCREEN" component={LoginScreen} />
         <Screen name="REQUEST_OTP_SCREEN" component={RequestOtpScreen} />
         <Screen name="VERIFY_OTP_SCREEN" component={VerifyOtpScreen} />
+        <Screen name="HOME_SCREEN" component={HomeScreen} />
       </Navigator>
     </NavigationContainer>
   );

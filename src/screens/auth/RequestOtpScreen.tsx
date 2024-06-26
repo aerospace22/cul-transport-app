@@ -1,11 +1,17 @@
 import React from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { ScrollView } from "react-native";
 import { BaseLayout } from "@/layouts";
 import { RequestOtpForm } from "@/components/domains";
+import type { StackParamsList } from "@/types/navigation";
 
-export const RequestOtpScreen = () => {
+type Props = {
+  navigation: StackNavigationProp<StackParamsList, "REQUEST_OTP_SCREEN">;
+};
+
+export const RequestOtpScreen: React.FC<Props> = (props) => {
   return (
-    <BaseLayout headerTitle="Reset Password" hasHeader>
+    <BaseLayout headerTitle="Create Account" hasHeader>
       <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 px-5">
         <RequestOtpForm />
       </ScrollView>

@@ -1,9 +1,15 @@
 import React from "react";
-import { View, ScrollView } from "react-native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { ScrollView } from "react-native";
 import { BaseLayout } from "@/layouts";
 import { SignupForm } from "@/components/domains";
+import type { StackParamsList } from "@/types/navigation";
 
-export const SignupScreen = () => {
+type Props = {
+  navigation: StackNavigationProp<StackParamsList, "SIGNUP_SCREEN">;
+};
+
+export const SignupScreen: React.FC<Props> = (props) => {
   return (
     <BaseLayout headerTitle="Create Account" hasHeader>
       <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 px-5">

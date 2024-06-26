@@ -4,4 +4,5 @@ export type StackParamsList = {
   LOGIN_SCREEN: undefined;
   REQUEST_OTP_SCREEN: undefined;
   VERIFY_OTP_SCREEN: undefined;
+  HOME_SCREEN: undefined;
 };

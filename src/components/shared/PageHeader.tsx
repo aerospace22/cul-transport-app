@@ -5,6 +5,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 
 export const PageHeader: React.FC<{
   title: string;
+  hideBack?: boolean;
 }> = (props) => {
   const { goBack } = useNavigation();
 
@@ -13,13 +14,12 @@ export const PageHeader: React.FC<{
   };
 
   return (
-    <View
-      className="h-[60px] bg-red-700 flex flex-row justify-center items-center relative px-5"
-      style={styles.shadow}
-    >
-      <Pressable className="absolute left-4 top-5" onPress={handleGoBack}>
-        <FontAwesome name="long-arrow-left" size={24} color="white" />
-      </Pressable>
+    <View className="h-[60px] bg-red-700 flex flex-row justify-center items-center relative px-5">
+      {!props.hideBack ? (
+        <Pressable className="absolute left-4 top-5" onPress={handleGoBack}>
+          <FontAwesome name="long-arrow-left" size={24} color="white" />
+        </Pressable>
+      ) : null}
 
       <Text className="text-lg text-white font-bold">{props.title}</Text>
     </View>

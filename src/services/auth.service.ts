@@ -1,7 +1,7 @@
 import httpClient from "@/api";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Toast } from "react-native-toast-alert";
 import { NavigationService } from "./navigation.service";
+import { useAuthStore } from "@/store";
 
 export const AuthService = {
   signupAccount: async function (
@@ -33,9 +33,12 @@ export const AuthService = {
     return await httpClient
       .post("/auth/login", payload)
       .then(async (response) => {
-        await AsyncStorage.setItem("isAuthenticated", "1");
-        await AsyncStorage.setItem("authToken", response.data.accessToken);
-        await AsyncStorage.setItem("authUser", JSON.stringify(response.data.user));
+        console.log(response.data);
+        const { SET_USER, SET_TOKEN, GET_TOKEN } = useAuthStore.getState();
+        const { user, accessToken } = response.data;
+
+        SET_USER(user);
+        SET_TOKEN(accessToken);
 
         Toast.success("Welcome to CUL Transport App");
         NavigationService.navigate("HOME_SCREEN");

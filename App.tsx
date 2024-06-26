@@ -11,7 +11,7 @@ const App: React.FC = () => {
   return (
     <GestureHandlerRootView>
       <ToastManager />
-      <StatusBar />
+      <StatusBar style="light" />
       <AppNavigation />
     </GestureHandlerRootView>
   );

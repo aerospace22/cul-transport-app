@@ -11,7 +11,12 @@ export const LoginForm: React.FC = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: "primokael@domain.com",
+      password: "policarpio",
+    },
+  });
   const { navigate } = useNavigation();
 
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -38,8 +43,9 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <View className="flex flex-col gap-y-4">
+    <View className="flex flex-col gap-y-4 mt-1">
       <View className="flex flex-col gap-y-1">
+        <Text className="font-bold mb-5">Please input and provide your details</Text>
         <Controller
           name="email"
           control={control}
