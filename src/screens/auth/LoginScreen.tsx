@@ -3,7 +3,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { ScrollView } from "react-native";
 import { BaseLayout } from "@/layouts";
 import { LoginForm } from "@/components/domains";
-import { useAuthHook } from "@/hooks";
+import { useAuth } from "@/hooks";
 import type { StackParamsList } from "@/types/navigation";
 
 type Props = {
@@ -11,11 +11,11 @@ type Props = {
 };
 
 export const LoginScreen: React.FC<Props> = (props) => {
-  const { isAuthenticated } = useAuthHook();
+  const { isAuthenticated } = useAuth();
 
   return (
     <BaseLayout headerTitle="Log In" hasHeader>
-      <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 px-5">
+      <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 pt-3 px-5">
         <LoginForm />
       </ScrollView>
     </BaseLayout>

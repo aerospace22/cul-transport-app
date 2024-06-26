@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 import { BaseInput } from "@/components/base";
 
 export const HeaderNav = () => {
@@ -15,7 +16,12 @@ export const HeaderNav = () => {
           <View className="w-[45px] h-[45px] bg-white rounded-full" />
         </View>
 
-        <BaseInput classNames="h-[40px] border-0" placeholder="Search Routes" />
+        <View className="w-full relative">
+          <View className="absolute top-3 left-2 z-50">
+            <AntDesign name="search1" size={24} color="#999" />
+          </View>
+          <BaseInput classNames="h-[50px] border-0 pl-10" placeholder="Search Routes" />
+        </View>
       </View>
     </View>
   );

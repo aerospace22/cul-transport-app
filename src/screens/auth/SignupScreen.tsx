@@ -12,7 +12,7 @@ type Props = {
 export const SignupScreen: React.FC<Props> = (props) => {
   return (
     <BaseLayout headerTitle="Create Account" hasHeader>
-      <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 px-5">
+      <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 pt-3 px-5">
         <SignupForm />
       </ScrollView>
     </BaseLayout>
