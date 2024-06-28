@@ -1,8 +1,7 @@
 import React from "react";
-import httpClient from "@/api";
 
 type Props = {
-  queryFn: () => any;
+  queryFn: () => Promise<unknown>;
 };
 
 export const useFetch = (props: Props) => {
@@ -11,7 +10,20 @@ export const useFetch = (props: Props) => {
   const [isError, setError] = React.useState<boolean>(false);
 
   const fetchData = async () => {
-    await props.queryFn();
+    setLoading(true);
+
+    await props
+      .queryFn()
+      .then((result: unknown) => {
+        setData(result);
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   React.useEffect(() => {
@@ -19,7 +31,7 @@ export const useFetch = (props: Props) => {
   }, []);
 
   return {
-    refetch: fetchData(),
+    refetch: fetchData,
     data,
     isLoading,
     isError,

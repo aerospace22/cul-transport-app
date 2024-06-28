@@ -4,6 +4,8 @@ import axios, {
   AxiosError,
   InternalAxiosRequestConfig,
 } from "axios";
+import { Toast } from "react-native-toast-alert";
+import { useAuthStore } from "@/store";
 
 const baseURLS = {
   prod: "https://cul-transport-server-production.up.railway.app/api/v1",
@@ -12,7 +14,7 @@ const baseURLS = {
 
 const instance: AxiosInstance = axios.create({
   // @ts-ignore
-  baseURL: baseURLS["prod"],
+  baseURL: baseURLS["local"],
 });
 
 instance.interceptors.request.use(
@@ -22,6 +24,15 @@ instance.interceptors.request.use(
      */
     config.headers["Accept"] = "application/json";
     config.headers["Content-Type"] = "application/json";
+
+    /**
+     * Set auth header
+     */
+    const { token: authToken } = useAuthStore.getState();
+
+    if (authToken) {
+      config.headers["Authorization"] = `Bearer ${authToken}`;
+    }
 
     return config;
   },
@@ -39,7 +50,7 @@ instance.interceptors.response.use(
       const { status } = error.response;
 
       if (status === 500) {
-        console.error({
+        Toast.error({
           message: "Error",
           description: "Server error occured!",
         });

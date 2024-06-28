@@ -73,7 +73,7 @@ export const BaseLayout: React.FC<{
           <PageHeader title={props.headerTitle} hideBack={props.hideBack} />
         ) : null}
 
-        <View className="flex-1 bg-slate-50">{props.children}</View>
+        <View className="flex-1 bg-slate-50 relative">{props.children}</View>
 
         {props.hasFooter ? <BottomNav navigate={navigate} /> : null}
       </SafeAreaView>

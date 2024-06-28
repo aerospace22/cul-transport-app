@@ -1,12 +1,13 @@
 import { useAuthStore } from "@/store";
 
 export const useAuth = () => {
-  const { GET_TOKEN, GET_USER } = useAuthStore();
+  const { token, user } = useAuthStore();
 
-  const isAuthenticated = Boolean(GET_TOKEN() !== undefined && GET_USER() !== undefined);
+  const isAuthenticated = Boolean(token !== undefined && user !== undefined);
 
   return {
     isAuthenticated,
-    user: GET_USER(),
+    user,
+    token,
   };
 };
