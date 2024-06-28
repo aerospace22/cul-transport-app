@@ -1,11 +1,11 @@
 import React from "react";
 
-type Props = {
-  queryFn: () => Promise<unknown>;
+type Props<T> = {
+  queryFn: () => Promise<T>;
 };
 
-export const useFetch = (props: Props) => {
-  const [data, setData] = React.useState<any>(null);
+export const useFetch = <T>(props: Props<T>) => {
+  const [data, setData] = React.useState<T | null>(null);
   const [isLoading, setLoading] = React.useState<boolean>(false);
   const [isError, setError] = React.useState<boolean>(false);
 
@@ -14,11 +14,10 @@ export const useFetch = (props: Props) => {
 
     await props
       .queryFn()
-      .then((result: unknown) => {
+      .then((result: T) => {
         setData(result);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         setError(true);
       })
       .finally(() => {
