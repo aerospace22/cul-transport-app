@@ -10,3 +10,8 @@ export { VerifyOtpForm } from "./../domains/auth/VerifyOtpForm";
  * (Domains) Home Component
  */
 export { HeaderNav } from "./dashboard/home/HeaderNav";
+
+/**
+ * (Domains) Bus Routes Component
+ */
+export { BusRoutesList } from "./dashboard/bus-routes/BusRoutesList";

@@ -1,10 +1,11 @@
 import httpClient from "@/api";
 import { Toast } from "react-native-toast-alert";
+import type { BusRoute } from "@/types/models";
 
 export const BusRoutesService = {
   getRoutesList: async function () {
     return await httpClient
-      .get("/bus-routes")
+      .get<BusRoute[]>("/bus-routes")
       .then((response) => response.data)
       .catch((error) => {
         console.log(error);

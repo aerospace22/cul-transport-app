@@ -13,6 +13,12 @@ type Props = {
 export const LoginScreen: React.FC<Props> = (props) => {
   const { isAuthenticated } = useAuth();
 
+  React.useEffect(() => {
+    if (isAuthenticated) {
+      props.navigation.navigate("HOME_SCREEN");
+    }
+  }, []);
+
   return (
     <BaseLayout headerTitle="Log In" hasHeader>
       <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 pt-3 px-5">
