@@ -9,33 +9,40 @@ import { useAuth } from "@/hooks";
 import { Toast } from "react-native-toast-alert";
 
 const BottomNav: React.FC<{ navigate: NavigationProp<any>["navigate"] }> = (props) => {
-  const iconStyle = { size: 28, color: "#666" };
+  const iconStyle = { size: 24, color: "#666" };
 
   const goToScreen = (screenName: string) => {
     // @ts-ignore
   };
 
   return (
-    <View className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-t-2 border-gray-100 px-5">
-      <Pressable className="flex flex-col gap-y-2">
+    <View
+      className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-gray-300 px-5"
+      style={{ borderTopWidth: 1 }}
+    >
+      <Pressable className="flex flex-col items-center gap-y-2">
         <AntDesign name="home" size={iconStyle.size} color={iconStyle.color} />
-        <Text className="text-xs text-gray-600">Home</Text>
+        <Text className="text-xs text-center uppercase text-gray-600 font-bold">
+          Home
+        </Text>
       </Pressable>
-      <Pressable className="flex flex-col gap-y-2">
+      <Pressable className="flex flex-col items-center gap-y-2">
         <Ionicons name="ticket-outline" size={iconStyle.size} color={iconStyle.color} />
-        <Text className="text-xs text-gray-600">Ticket</Text>
+        <Text className="text-xs text-center uppercase text-gray-600 font-bold">
+          Tickets
+        </Text>
       </Pressable>
-      <Pressable className="flex flex-col gap-y-2">
-        <AntDesign name="home" size={iconStyle.size} color={iconStyle.color} />
-        <Text className="text-xs text-gray-600">Home</Text>
+      <Pressable className="flex flex-col items-center gap-y-2">
+        <AntDesign name="creditcard" size={iconStyle.size} color={iconStyle.color} />
+        <Text className="text-xs text-center uppercase text-gray-600 font-bold">
+          Payments
+        </Text>
       </Pressable>
-      <Pressable className="flex flex-col gap-y-2">
+      <Pressable className="flex flex-col items-center gap-y-2">
         <AntDesign name="user" size={iconStyle.size} color={iconStyle.color} />
-        <Text className="text-xs text-gray-600">Home</Text>
-      </Pressable>
-      <Pressable className="flex flex-col gap-y-2">
-        <AntDesign name="user" size={iconStyle.size} color={iconStyle.color} />
-        <Text className="text-xs text-gray-600">Account</Text>
+        <Text className="text-xs text-center uppercase text-gray-600 font-bold">
+          Account
+        </Text>
       </Pressable>
     </View>
   );

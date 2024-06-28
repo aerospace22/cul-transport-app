@@ -12,15 +12,25 @@ type Props = {
 
 export const HomeScreen: React.FC<Props> = (props) => {
   return (
-    <BaseLayout>
+    <BaseLayout hasFooter>
       <HeaderNav />
-      <View className="flex-1 flex-col gap-y-4">
+
+      <View className="px-3 mt-2">
+        <View>
+          <Text className="text-xs text-gray-700 font-medium">
+            Current Active Booking
+          </Text>
+          <EmptyData />
+        </View>
+
         <ScrollView
-          className="flex-col gap-4 px-3"
+          className="flex-col gap-4 mt-2"
           showsHorizontalScrollIndicator={false}
         >
           <View>
-            <Text className="text-gray-700 font-medium">My Upcoming Travels</Text>
+            <Text className="text-xs text-gray-700 font-medium">
+              Promos & Announcements
+            </Text>
             <EmptyData />
           </View>
         </ScrollView>
