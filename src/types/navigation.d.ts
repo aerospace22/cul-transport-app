@@ -5,4 +5,7 @@ export type StackParamsList = {
   REQUEST_OTP_SCREEN: undefined;
   VERIFY_OTP_SCREEN: undefined;
   HOME_SCREEN: undefined;
+  ALL_ROUTES_SCREEN: undefined;
+  MY_TICKETS_SCREEN: undefined;
+  MY_PAYMENTS_SCREEN: undefined;
 };

@@ -27,6 +27,7 @@ export type BusRoute = {
   arrivalDate: string;
   arrivalTime: string;
   status: string;
+  bus: Bus;
   busRouteTickets: BusRouteTicket[];
   busRouteTicketBookings: BusRouteTicketBooking[];
   busRouteTicketBookingTransaction: BusRouteTicketBookingTransaction[];

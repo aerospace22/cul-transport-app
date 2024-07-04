@@ -11,6 +11,9 @@ import {
   RequestOtpScreen,
   VerifyOtpScreen,
   HomeScreen,
+  AllRoutesScreen,
+  MyTicketsScreen,
+  MyPaymentsScreen,
 } from "@/screens";
 
 const { Navigator, Screen } = createStackNavigator<StackParamsList>();
@@ -29,6 +32,9 @@ export const AppNavigation: React.FC = () => {
         <Screen name="REQUEST_OTP_SCREEN" component={RequestOtpScreen} />
         <Screen name="VERIFY_OTP_SCREEN" component={VerifyOtpScreen} />
         <Screen name="HOME_SCREEN" component={HomeScreen} />
+        <Screen name="ALL_ROUTES_SCREEN" component={AllRoutesScreen} />
+        <Screen name="MY_TICKETS_SCREEN" component={MyTicketsScreen} />
+        <Screen name="MY_PAYMENTS_SCREEN" component={MyPaymentsScreen} />
       </Navigator>
     </NavigationContainer>
   );
