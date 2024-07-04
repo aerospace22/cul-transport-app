@@ -27,7 +27,7 @@ export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
         <View className="bg-white rounded" key={`bus-route-${route.routeNo}`}>
           <View className="flex flex-row p-2">
             <View className="flex basis-3/4">
-              <Text className="text-[10px] text-gray-500 uppercase mb-1">
+              <Text className="text-[10px] text-gray-700 uppercase mb-1">
                 #{route.routeNo}
               </Text>
               <View className="flex flex-row items-center mb-1">
@@ -39,15 +39,18 @@ export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
                 </View>
                 <Text className="text-sm text-black font-medium">{route.routeTo}</Text>
               </View>
-              <Text className="text-[10px] text-gray-500 uppercase mb-1">
+              <Text className="text-[10px] text-gray-700 uppercase mb-1">
                 Total Seats: {getTotalSeatsAvailable(route.busRouteTickets)}
               </Text>
-              <Text className="text-[10px] text-gray-500 uppercase mb-1">
+              <Text className="text-[10px] text-gray-700 uppercase mb-1">
                 Type: {route.bus.type}
+              </Text>
+              <Text className="text-[10px] text-gray-700 uppercase mb-1">
+                Departure Datetime: {route.departureDate} {route.departureTime}
               </Text>
             </View>
             <View className="flex basis-1/4">
-              <Text className="text-xs text-gray-500">Ticket Price</Text>
+              <Text className="text-xs text-gray-700">Ticket Price</Text>
               {route.busRouteTickets.length ? (
                 <></>
               ) : (

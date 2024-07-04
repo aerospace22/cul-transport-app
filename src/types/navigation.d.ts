@@ -8,4 +8,5 @@ export type StackParamsList = {
   ALL_ROUTES_SCREEN: undefined;
   MY_TICKETS_SCREEN: undefined;
   MY_PAYMENTS_SCREEN: undefined;
+  MY_PROFILE_SCREEN: undefined;
 };

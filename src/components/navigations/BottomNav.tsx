@@ -65,7 +65,7 @@ export const BottomNav: React.FC<{ navigate: NavigationProp<any>["navigate"] }> 
       icon: "card-outline",
     },
     {
-      name: "MY_ACCOUNT_SCREEN",
+      name: "MY_PROFILE_SCREEN",
       label: "Account",
       icon: "person-outline",
     },

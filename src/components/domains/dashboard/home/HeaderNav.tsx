@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { BaseInput } from "@/components/base";
 
 export const HeaderNav = () => {
+  const { navigate } = useNavigation();
+
+  const goToAllRoutes = () => {
+    // @ts-ignore
+    return navigate("ALL_ROUTES_SCREEN");
+  };
+
   return (
     <View style={styles.headerContainer}>
       <View className="bg-red-700 flex flex-col justify-between gap-y-4 py-4 px-3">
@@ -21,7 +28,12 @@ export const HeaderNav = () => {
           <View className="absolute top-3 left-2 z-50">
             <AntDesign name="search1" size={24} color="#999" />
           </View>
-          <BaseInput classNames="h-[50px] border-0 pl-10" placeholder="Search Routes" />
+          <Pressable
+            className="h-[50px] w-full flex justify-center bg-white border-0 rounded-lg pl-10"
+            onPress={goToAllRoutes}
+          >
+            <Text className="text-sm text-gray-600">SEARCH</Text>
+          </Pressable>
         </View>
       </View>
     </View>
