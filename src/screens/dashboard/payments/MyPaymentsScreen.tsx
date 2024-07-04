@@ -16,7 +16,7 @@ export const MyPaymentsScreen: React.FC<Props> = (props) => {
   };
 
   return (
-    <BaseLayout headerTitle="My PAYMENTS" hasFooter hasHeader>
+    <BaseLayout headerTitle="MY PAYMENTS" hasFooter hasHeader>
       <View className="px-3">
         <EmptyData>
           <Text className="text-xs text-gray-600 mt-4">

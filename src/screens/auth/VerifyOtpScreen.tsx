@@ -11,7 +11,7 @@ type Props = {
 
 export const VerifyOtpScreen: React.FC<Props> = (props) => {
   return (
-    <BaseLayout headerTitle="Create Account" hasHeader>
+    <BaseLayout headerTitle="VERIFY OTP" hasHeader>
       <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 px-5">
         <VerifyOtpForm />
       </ScrollView>

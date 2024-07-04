@@ -20,7 +20,7 @@ export const LoginScreen: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <BaseLayout headerTitle="Log In" hasHeader>
+    <BaseLayout headerTitle="LOG IN" hasHeader>
       <ScrollView showsHorizontalScrollIndicator={false} className="flex-1 pt-3 px-5">
         <LoginForm />
       </ScrollView>

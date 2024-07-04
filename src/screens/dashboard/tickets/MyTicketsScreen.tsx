@@ -16,7 +16,7 @@ export const MyTicketsScreen: React.FC<Props> = (props) => {
   };
 
   return (
-    <BaseLayout headerTitle="My Tickets" hasFooter hasHeader>
+    <BaseLayout headerTitle="MY TICKETS" hasFooter hasHeader>
       <View className="px-3">
         <EmptyData>
           <Text className="text-xs text-gray-600 mt-4">

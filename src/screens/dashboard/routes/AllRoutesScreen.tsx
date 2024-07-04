@@ -3,7 +3,6 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { View, Text, TextInput, Pressable, ScrollView } from "react-native";
 import { BaseLayout } from "@/layouts";
 import { BusRoutesList } from "@/components/domains";
-import { BaseInput } from "@/components/base";
 import type { StackParamsList } from "@/types/navigation";
 
 type Props = {
@@ -13,14 +12,14 @@ type Props = {
 export const AllRoutesScreen: React.FC<Props> = (props) => {
   return (
     <BaseLayout headerTitle="FIND YOUR BUS" hasFooter hasHeader>
-      <View className="w-full h-[150px] bg-red-900 p-3">
+      <View className="w-full bg-white p-3">
         <View className="flex flex-col items-center space-y-2">
           <TextInput
-            className="w-full h-[35px] rounded-lg bg-white text-xs px-2"
+            className="w-full h-[45px] rounded-lg bg-gray-200 text-xs font-bold px-2"
             placeholder="ROUTE FROM"
           />
           <TextInput
-            className="w-full h-[35px] rounded-lg bg-white text-xs px-2"
+            className="w-full h-[45px] rounded-lg bg-gray-200 text-xs font-bold px-2"
             placeholder="ROUTE TO"
           />
           <Pressable className="w-full h-[35px] bg-green-600 rounded-lg items-center justify-center">
