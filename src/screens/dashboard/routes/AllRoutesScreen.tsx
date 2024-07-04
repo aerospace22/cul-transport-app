@@ -15,11 +15,11 @@ export const AllRoutesScreen: React.FC<Props> = (props) => {
       <View className="w-full bg-white p-3">
         <View className="flex flex-col items-center space-y-2">
           <TextInput
-            className="w-full h-[45px] rounded-lg bg-gray-200 text-xs font-bold px-2"
+            className="w-full h-[45px] rounded-lg bg-gray-100 text-xs font-bold px-2"
             placeholder="ROUTE FROM"
           />
           <TextInput
-            className="w-full h-[45px] rounded-lg bg-gray-200 text-xs font-bold px-2"
+            className="w-full h-[45px] rounded-lg bg-gray-100 text-xs font-bold px-2"
             placeholder="ROUTE TO"
           />
           <Pressable className="w-full h-[35px] bg-green-600 rounded-lg items-center justify-center">

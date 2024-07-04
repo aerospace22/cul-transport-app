@@ -19,7 +19,7 @@ export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
 
   if (isLoading) return <LoadingData />;
 
-  if (!data || !data?.length || isError) return <EmptyData />;
+  if (!data || !data?.length) return <EmptyData />;
 
   return (
     <View className="flex flex-col gap-y-3">
@@ -40,7 +40,7 @@ export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
                 <Text className="text-sm text-black font-medium">{route.routeTo}</Text>
               </View>
               <Text className="text-[10px] text-gray-700 uppercase mb-1">
-                Total Seats: {getTotalSeatsAvailable(route.busRouteTickets)}
+                Total Seats: {getTotalSeatsAvailable(route.busRouteTickets)} (Remaining)
               </Text>
               <Text className="text-[10px] text-gray-700 uppercase mb-1">
                 Type: {route.bus.type}

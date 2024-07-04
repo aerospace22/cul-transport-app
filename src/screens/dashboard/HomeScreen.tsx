@@ -40,7 +40,7 @@ export const HomeScreen: React.FC<Props> = (props) => {
                 <Text className="text-[10px] text-blue-700 underline">View All</Text>
               </Pressable>
             </View>
-            <BusRoutesList limit={5} />
+            <BusRoutesList />
           </View>
 
           <View>
@@ -50,7 +50,7 @@ export const HomeScreen: React.FC<Props> = (props) => {
                 <Text className="text-[10px] text-blue-700 underline">View All</Text>
               </Pressable>
             </View>
-            <BusRoutesList limit={5} />
+            <BusRoutesList />
           </View>
         </ScrollView>
       </View>
