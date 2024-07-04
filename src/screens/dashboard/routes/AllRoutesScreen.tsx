@@ -11,7 +11,7 @@ type Props = {
 
 export const AllRoutesScreen: React.FC<Props> = (props) => {
   return (
-    <BaseLayout headerTitle="My Tickets" hasFooter hasHeader>
+    <BaseLayout headerTitle="FIND YOUR BUS" hasFooter hasHeader>
       <ScrollView className="flex-1 pt-2 px-3" showsHorizontalScrollIndicator={false}>
         <BusRoutesList />
       </ScrollView>
