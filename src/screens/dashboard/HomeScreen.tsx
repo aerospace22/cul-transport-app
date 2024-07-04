@@ -35,7 +35,7 @@ export const HomeScreen: React.FC<Props> = (props) => {
         >
           <View>
             <View className="flex flex-row justify-between gap-x-2">
-              <Text className="text-xs font-medium mb-2">Routes Today</Text>
+              <Text className="text-md font-bold mb-2">Routes Today</Text>
               <Pressable>
                 <Text className="text-[10px] text-blue-700 underline">View All</Text>
               </Pressable>
@@ -45,7 +45,7 @@ export const HomeScreen: React.FC<Props> = (props) => {
 
           <View>
             <View className="flex flex-row justify-between gap-x-2">
-              <Text className="text-xs font-medium mb-2">Other Routes (AFTER TODAY)</Text>
+              <Text className="text-md font-bold mb-2">Other Routes (AFTER TODAY)</Text>
               <Pressable>
                 <Text className="text-[10px] text-blue-700 underline">View All</Text>
               </Pressable>

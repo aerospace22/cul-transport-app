@@ -73,7 +73,7 @@ export const BottomNav: React.FC<{ navigate: NavigationProp<any>["navigate"] }> 
 
   return (
     <View
-      className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-gray-300 px-5"
+      className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-gray-100 px-5"
       style={{ borderTopWidth: 1 }}
     >
       {buttons.map((button) => (

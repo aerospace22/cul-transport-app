@@ -40,7 +40,7 @@ export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
                 <Text className="text-sm text-black font-medium">{route.routeTo}</Text>
               </View>
               <Text className="text-[10px] text-gray-700 uppercase mb-1">
-                Total Seats: {getTotalSeatsAvailable(route.busRouteTickets)} (Remaining)
+                Total Seats: {getTotalSeatsAvailable(route.busRouteTickets)} (Available)
               </Text>
               <Text className="text-[10px] text-gray-700 uppercase mb-1">
                 Type: {route.bus.type}
