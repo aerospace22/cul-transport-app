@@ -20,7 +20,7 @@ export const MyTicketsScreen: React.FC<Props> = (props) => {
       <View className="px-3">
         <EmptyData>
           <Text className="text-xs text-gray-600 mt-4">
-            You do not have any bookings yet
+            You do not have any tickets/bookings yet
           </Text>
           <Pressable onPress={goToRoutes}>
             <Text className="text-xs text-blue-600 underline">Book now!</Text>

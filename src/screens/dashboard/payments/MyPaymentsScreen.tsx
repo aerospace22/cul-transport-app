@@ -6,7 +6,7 @@ import { EmptyData } from "@/components/shared";
 import type { StackParamsList } from "@/types/navigation";
 
 type Props = {
-  navigation: StackNavigationProp<StackParamsList, "MY_TICKETS_SCREEN">;
+  navigation: StackNavigationProp<StackParamsList, "MY_PAYMENTS_SCREEN">;
 };
 
 export const MyPaymentsScreen: React.FC<Props> = (props) => {
@@ -16,11 +16,11 @@ export const MyPaymentsScreen: React.FC<Props> = (props) => {
   };
 
   return (
-    <BaseLayout headerTitle="My Tickets" hasFooter hasHeader>
+    <BaseLayout headerTitle="My PAYMENTS" hasFooter hasHeader>
       <View className="px-3">
         <EmptyData>
           <Text className="text-xs text-gray-600 mt-4">
-            You do not have any bookings yet
+            You do not have any payments yet
           </Text>
           <Pressable onPress={goToRoutes}>
             <Text className="text-xs text-blue-600 underline">Book now!</Text>

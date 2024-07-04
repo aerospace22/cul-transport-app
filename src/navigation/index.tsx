@@ -20,6 +20,8 @@ const { Navigator, Screen } = createStackNavigator<StackParamsList>();
 
 const navigationOpts = {
   headerShown: false,
+  animation: "none",
+  animationEnabled: false,
 };
 
 export const AppNavigation: React.FC = () => {
