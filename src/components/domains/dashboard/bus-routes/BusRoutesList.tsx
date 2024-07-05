@@ -35,7 +35,10 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
   return (
     <View className="flex flex-col gap-y-2">
       {data.map((route: BusRoute) => (
-        <Pressable key={`bus-route-${route.routeNo}`}>
+        <Pressable
+          key={`bus-route-${route.routeNo}`}
+          onPress={() => goToRoute(route.routeNo)}
+        >
           <View className="min-h-[60px] bg-white rounded-lg border border-gray-100 p-3">
             <View className="flex flex-row justify-between">
               <View className="flex basis-1/4">

@@ -11,9 +11,9 @@ export const useAuthStore = create<AuthStore>()(
       user: undefined,
       token: undefined,
 
-      SET_USER: (user: User) => set({ user }),
+      SET_USER: (user: User | undefined) => set({ user }),
       UNSET_USER: () => set({ user: undefined }),
-      SET_TOKEN: (token: string) => set({ token }),
+      SET_TOKEN: (token: string | undefined) => set({ token }),
       UNSET_TOKEN: () => set({ token: undefined }),
     }),
     {
