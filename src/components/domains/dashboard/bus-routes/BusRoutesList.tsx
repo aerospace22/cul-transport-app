@@ -52,14 +52,18 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
                   <Text className="text-xs mb-2">{route.routeFrom} </Text>
 
                   <Text className="text-[9px] text-red-500 font-bold">DEPARTURE</Text>
-                  <Text className="text-xs">{route.routeFrom} </Text>
+                  <Text className="text-[11px]">
+                    {route.departureDate} {route.departureTime}
+                  </Text>
                 </View>
                 <View className="flex items-end basis-1/2">
                   <Text className="text-[9px] text-red-500 font-bold">TO</Text>
                   <Text className="text-xs text-right mb-2">{route.routeTo} </Text>
 
                   <Text className="text-[9px] text-red-500 font-bold">ARRIVAL</Text>
-                  <Text className="text-xs text-right">{route.routeTo} </Text>
+                  <Text className="text-[11px] text-right">
+                    {route.arrivalDate} {route.arrivalTime}
+                  </Text>
                 </View>
               </View>
               <View className="flex basis-1/4">
