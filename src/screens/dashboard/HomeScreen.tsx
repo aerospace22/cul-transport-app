@@ -31,7 +31,7 @@ export const HomeScreen: React.FC<Props> = (props) => {
                 <Text className="text-xs text-blue-700 underline">View All</Text>
               </Pressable>
             </View>
-            <ScrollView className="flex-1 mt-2">
+            <ScrollView className="flex-1 mt-2" showsVerticalScrollIndicator={false}>
               <BusRoutesList />
             </ScrollView>
           </View>

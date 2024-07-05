@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { useFetch } from "@/hooks";
+import { ImageAssets } from "@/assets/index";
 import { BusRoutesService } from "@/services";
 import { EmptyData, LoadingData } from "@/components/shared";
 import type { BusRoute, BusRouteTicket } from "@/types/models";
@@ -32,15 +33,48 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
   if (!data || !data?.length) return <EmptyData />;
 
   return (
-    <View className="flex flex-col gap-y-4">
+    <View className="flex flex-col gap-y-2">
       {data.map((route: BusRoute) => (
         <Pressable key={`bus-route-${route.routeNo}`}>
           <View className="min-h-[60px] bg-white rounded-lg border border-gray-100 p-3">
             <View className="flex flex-row justify-between">
-              <View>
-                <Text>
-                  {route.routeFrom} ===== {route.routeTo}
-                </Text>
+              <View className="flex basis-1/4">
+                <Image
+                  source={ImageAssets.busLogo}
+                  resizeMethod="scale"
+                  resizeMode="contain"
+                  className="h-16 w-16"
+                />
+              </View>
+              <View className="w-full flex flex-row basis-2/4 ">
+                <View className="flex basis-1/2">
+                  <Text className="text-[9px] text-red-500 font-bold">FROM</Text>
+                  <Text className="text-xs mb-2">{route.routeFrom} </Text>
+
+                  <Text className="text-[9px] text-red-500 font-bold">DEPARTURE</Text>
+                  <Text className="text-xs">{route.routeFrom} </Text>
+                </View>
+                <View className="flex items-end basis-1/2">
+                  <Text className="text-[9px] text-red-500 font-bold">TO</Text>
+                  <Text className="text-xs text-right mb-2">{route.routeTo} </Text>
+
+                  <Text className="text-[9px] text-red-500 font-bold">ARRIVAL</Text>
+                  <Text className="text-xs text-right">{route.routeTo} </Text>
+                </View>
+              </View>
+              <View className="flex basis-1/4">
+                <View className="mb-2">
+                  <Text className="text-[9px] text-right text-black font-bold">
+                    PREMIUM
+                  </Text>
+                  <Text className="text-right">₱ 0.00</Text>
+                </View>
+                <View className="mb-2">
+                  <Text className="text-[9px] text-right text-black font-bold">
+                    ORDINARY
+                  </Text>
+                  <Text className="text-right">₱ 0.00</Text>
+                </View>
               </View>
             </View>
           </View>
