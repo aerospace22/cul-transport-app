@@ -12,7 +12,7 @@ type Props = {
 export const AllRoutesScreen: React.FC<Props> = (props) => {
   return (
     <BaseLayout headerTitle="FIND YOUR BUS" hasFooter hasHeader>
-      <View className="w-full bg-white p-3">
+      <View className="w-full bg-white p-3 hidden">
         <View className="flex flex-col items-center space-y-2">
           <TextInput
             className="w-full h-[45px] rounded-lg bg-gray-100 text-xs font-bold px-2"

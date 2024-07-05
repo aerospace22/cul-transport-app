@@ -1,59 +1,42 @@
 import React from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { View, Text, Pressable, ScrollView, RefreshControl } from "react-native";
+import { View, Text, Pressable, TextInput } from "react-native";
 import { BaseLayout } from "@/layouts";
 import { HeaderNav } from "@/components/domains";
-import { BusRoutesList } from "@/components/domains";
+import { BusRoutesList, BusSearchForm } from "@/components/domains";
 import type { StackParamsList } from "@/types/navigation";
+import { ScrollView } from "react-native-gesture-handler";
 
 type Props = {
   navigation: StackNavigationProp<StackParamsList, "HOME_SCREEN">;
 };
 
 export const HomeScreen: React.FC<Props> = (props) => {
-  const [refetchLoading, setRefetchLoading] = React.useState<boolean>(false);
-
-  const onRefresh = React.useCallback(() => {
-    setRefetchLoading(true);
-
-    setTimeout(() => {
-      setRefetchLoading(false);
-    }, 2000);
-  }, []);
+  const goToAllRoutes = () => {
+    return props.navigation.navigate("ALL_ROUTES_SCREEN");
+  };
 
   return (
-    <BaseLayout hasFooter>
-      <HeaderNav />
+    <>
+      <BaseLayout hasFooter>
+        <HeaderNav />
 
-      <View className="flex-1 px-3 mt-2">
-        <ScrollView
-          className="flex-col gap-y-4 mt-1"
-          refreshControl={
-            <RefreshControl refreshing={refetchLoading} onRefresh={onRefresh} />
-          }
-          showsHorizontalScrollIndicator={false}
-        >
-          <View>
-            <View className="flex flex-row justify-between gap-x-2">
-              <Text className="text-md font-bold mb-2">Routes Today</Text>
-              <Pressable>
-                <Text className="text-[10px] text-blue-700 underline">View All</Text>
+        <View className="flex-1 px-3 pt-3">
+          <BusSearchForm />
+
+          <View className="flex-1 mt-5">
+            <View className="flex flex-row justify-between">
+              <Text className="fond-medium">Recent Posted Routes</Text>
+              <Pressable onPress={goToAllRoutes}>
+                <Text className="text-xs text-blue-700 underline">View All</Text>
               </Pressable>
             </View>
-            <BusRoutesList />
+            <ScrollView className="flex-1 mt-2">
+              <BusRoutesList />
+            </ScrollView>
           </View>
-
-          <View>
-            <View className="flex flex-row justify-between gap-x-2">
-              <Text className="text-md font-bold mb-2">Other Routes (AFTER TODAY)</Text>
-              <Pressable>
-                <Text className="text-[10px] text-blue-700 underline">View All</Text>
-              </Pressable>
-            </View>
-            <BusRoutesList />
-          </View>
-        </ScrollView>
-      </View>
-    </BaseLayout>
+        </View>
+      </BaseLayout>
+    </>
   );
 };

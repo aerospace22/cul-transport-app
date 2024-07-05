@@ -24,7 +24,7 @@ export const HeaderNav = () => {
           <SimpleLineIcons name="menu" size={24} color="#fff" />
         </View>
 
-        <View className="w-full relative">
+        <View className="w-full relative hidden">
           <View className="absolute top-3 left-2 z-50">
             <AntDesign name="search1" size={24} color="#999" />
           </View>

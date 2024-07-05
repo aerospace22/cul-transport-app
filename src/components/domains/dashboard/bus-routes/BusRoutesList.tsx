@@ -1,13 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { useFetch } from "@/hooks";
 import { BusRoutesService } from "@/services";
 import { EmptyData, LoadingData } from "@/components/shared";
 import type { BusRoute, BusRouteTicket } from "@/types/models";
 
-export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
-  const { isLoading, isError, data } = useFetch({
+export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean }> = (
+  props
+) => {
+  const { isLoading, data, refetch } = useFetch({
     queryFn: async () => await BusRoutesService.getRoutesList(),
   });
 
@@ -17,48 +19,32 @@ export const BusRoutesList: React.FC<{ limit?: number }> = (props) => {
     return 1;
   };
 
+  const goToRoute = (routeNo: string) => {
+    //
+  };
+
+  React.useEffect(() => {
+    refetch();
+  }, [props.triggerRefetch]);
+
   if (isLoading) return <LoadingData />;
 
   if (!data || !data?.length) return <EmptyData />;
 
   return (
-    <View className="flex flex-col gap-y-3">
+    <View className="flex flex-col gap-y-4">
       {data.map((route: BusRoute) => (
-        <View className="bg-white rounded" key={`bus-route-${route.routeNo}`}>
-          <View className="flex flex-row p-2">
-            <View className="flex basis-3/4">
-              <Text className="text-[10px] text-gray-700 uppercase mb-1">
-                #{route.routeNo}
-              </Text>
-              <View className="flex flex-row items-center mb-1">
-                <Text className="text-sm text-black font-medium">{route.routeFrom}</Text>
-                <View className="flex flex-row items-center gap-x-2 mx-2">
-                  <FontAwesome name="long-arrow-left" size={16} color="lightcoral" />
-                  <FontAwesome6 name="bus-simple" size={14} color="lightcoral" />
-                  <FontAwesome name="long-arrow-right" size={16} color="lightcoral" />
-                </View>
-                <Text className="text-sm text-black font-medium">{route.routeTo}</Text>
+        <Pressable key={`bus-route-${route.routeNo}`}>
+          <View className="min-h-[60px] bg-white rounded-lg border border-gray-100 p-3">
+            <View className="flex flex-row justify-between">
+              <View>
+                <Text>
+                  {route.routeFrom} ===== {route.routeTo}
+                </Text>
               </View>
-              <Text className="text-[10px] text-gray-700 uppercase mb-1">
-                Total Seats: {getTotalSeatsAvailable(route.busRouteTickets)} (Available)
-              </Text>
-              <Text className="text-[10px] text-gray-700 uppercase mb-1">
-                Type: {route.bus.type}
-              </Text>
-              <Text className="text-[10px] text-gray-700 uppercase mb-1">
-                Departure Datetime: {route.departureDate} {route.departureTime}
-              </Text>
-            </View>
-            <View className="flex basis-1/4">
-              <Text className="text-xs text-gray-700">Ticket Price</Text>
-              {route.busRouteTickets.length ? (
-                <></>
-              ) : (
-                <Text className="text-xs text-gray-700">₱ N/A</Text>
-              )}
             </View>
           </View>
-        </View>
+        </Pressable>
       ))}
     </View>
   );

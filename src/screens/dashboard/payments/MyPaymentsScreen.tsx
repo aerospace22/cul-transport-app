@@ -12,7 +12,7 @@ type Props = {
 export const MyPaymentsScreen: React.FC<Props> = (props) => {
   const goToRoutes = () => {
     // @ts-ignore
-    return props.navigation.navigate("MY_PAYENTS_SCREEN");
+    return props.navigation.navigate("MY_PAYMENTS_SCREEN");
   };
 
   return (
