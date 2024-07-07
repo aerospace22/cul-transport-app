@@ -12,4 +12,7 @@ export type StackParamsList = {
   MY_TICKETS_SCREEN: undefined;
   MY_PAYMENTS_SCREEN: undefined;
   MY_PROFILE_SCREEN: undefined;
+  BOOK_TICKETS_SCREEN: {
+    routeNo: string;
+  };
 };

@@ -9,6 +9,11 @@ const buttons = [
     icon: "home-outline",
   },
   {
+    name: "ALL_ROUTES_SCREEN",
+    label: "Routes",
+    icon: "bus-outline",
+  },
+  {
     name: "MY_TICKETS_SCREEN",
     label: "Tickets",
     icon: "ticket-outline",
@@ -73,7 +78,7 @@ export const BottomNav: React.FC<{ navigate: NavigationProp<any>["navigate"] }> 
 
   return (
     <View
-      className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-gray-100 px-10"
+      className="w-full h-[60px] flex flex-row justify-between items-center fixed bottom-0 border-gray-100 px-10"
       style={{ borderTopWidth: 1 }}
     >
       {buttons.map((button) => (

@@ -38,7 +38,8 @@
     "react-native-screens": "3.31.1",
     "react-native-svg": "^15.3.0",
     "react-native-toast-alert": "^0.2.2",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "expo-linking": "~6.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

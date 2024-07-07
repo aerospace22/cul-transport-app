@@ -17,3 +17,4 @@ export { ViewRouteScreen } from "./dashboard/routes/ViewRouteScreen";
 export { MyTicketsScreen } from "./dashboard/tickets/MyTicketsScreen";
 export { MyPaymentsScreen } from "./dashboard/payments/MyPaymentsScreen";
 export { MyProfileScreen } from "./dashboard/profile/MyAccountScreen";
+export { BookTicketsScreen } from "./dashboard/bookings/BookTicketsScreen";

@@ -16,6 +16,7 @@ import {
   MyTicketsScreen,
   MyPaymentsScreen,
   MyProfileScreen,
+  BookTicketsScreen,
 } from "@/screens";
 
 const { Navigator, Screen } = createStackNavigator<StackParamsList>();
@@ -41,6 +42,7 @@ export const AppNavigation: React.FC = () => {
         <Screen name="MY_TICKETS_SCREEN" component={MyTicketsScreen} />
         <Screen name="MY_PAYMENTS_SCREEN" component={MyPaymentsScreen} />
         <Screen name="MY_PROFILE_SCREEN" component={MyProfileScreen} />
+        <Screen name="BOOK_TICKETS_SCREEN" component={BookTicketsScreen} />
       </Navigator>
     </NavigationContainer>
   );
