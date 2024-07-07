@@ -1,12 +1,13 @@
 import React from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
+import { View, Text, Pressable } from "react-native";
 import { useFetch } from "@/hooks";
 import { BusRoutesService } from "@/services";
 import { BaseLayout } from "@/layouts";
-import { BusRouteInformation } from "@/components/domains";
 import { EmptyData, LoadingData } from "@/components/shared";
 import type { StackParamsList } from "@/types/navigation";
+import { BusRouteInformation } from "@/components/domains";
 
 type Props = {
   navigation: StackNavigationProp<StackParamsList, "BOOK_TICKETS_SCREEN">;
@@ -25,7 +26,15 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
       {isLoading ? (
         <LoadingData />
       ) : data ? (
-        <BusRouteInformation busRoute={data} hideTicketPricing />
+        <View className="flex-1 relative">
+          <BusRouteInformation busRoute={data} />
+
+          <View className="w-full absolute bottom-3 px-2">
+            <Pressable className="w-full h-[40px] bg-green-600 justify-center items-center rounded-lg">
+              <Text className="text-white font-bold">PROCEED TO PAY (via Paymongo)</Text>
+            </Pressable>
+          </View>
+        </View>
       ) : (
         <EmptyData />
       )}
