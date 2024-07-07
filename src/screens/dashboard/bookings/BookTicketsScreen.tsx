@@ -21,6 +21,10 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
     queryFn: async () => await BusRoutesService.getRouteByRouteNo(routeNo),
   });
 
+  const handleProceedPay = () => {
+    console.log("handleProceedPay");
+  };
+
   return (
     <BaseLayout headerTitle="TICKETS BOOKING" hasFooter hasHeader>
       {isLoading ? (
@@ -30,7 +34,10 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
           <BusRouteInformation busRoute={data} />
 
           <View className="w-full absolute bottom-3 px-2">
-            <Pressable className="w-full h-[40px] bg-green-600 justify-center items-center rounded-lg">
+            <Pressable
+              className="w-full h-[40px] bg-green-600 justify-center items-center rounded-lg"
+              onPress={handleProceedPay}
+            >
               <Text className="text-white font-bold">PROCEED TO PAY (via Paymongo)</Text>
             </Pressable>
           </View>
