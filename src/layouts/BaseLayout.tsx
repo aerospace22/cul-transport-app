@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { View, Text, Pressable } from "react-native";
+import { View } from "react-native";
 import { PageHeader } from "@/components/shared";
 import { BottomNav } from "@/components/navigations";
 import { useAuth } from "@/hooks";

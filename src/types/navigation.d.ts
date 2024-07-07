@@ -6,7 +6,7 @@ export type StackParamsList = {
   VERIFY_OTP_SCREEN: undefined;
   HOME_SCREEN: undefined;
   ALL_ROUTES_SCREEN: undefined;
-  VIEW_ROUTE_SCREEN: { routeNo: string };
+  VIEW_ROUTE_SCREEN: undefined;
   MY_TICKETS_SCREEN: undefined;
   MY_PAYMENTS_SCREEN: undefined;
   MY_PROFILE_SCREEN: undefined;

@@ -1,27 +1,24 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, Image } from "react-native";
-import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { useFetch } from "@/hooks";
 import { ImageAssets } from "@/assets/index";
 import { BusRoutesService } from "@/services";
 import { EmptyData, LoadingData } from "@/components/shared";
-import type { BusRoute, BusRouteTicket } from "@/types/models";
+import type { BusRoute } from "@/types/models";
 
 export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean }> = (
   props
 ) => {
+  const { navigate } = useNavigation();
+
   const { isLoading, data, refetch } = useFetch({
     queryFn: async () => await BusRoutesService.getRoutesList(),
   });
 
-  const getTotalSeatsAvailable = (routeTickets: BusRouteTicket[]) => {
-    if (!routeTickets.length) return 0;
-
-    return 1;
-  };
-
   const goToRoute = (routeNo: string) => {
-    //
+    // @ts-ignore
+    return navigate("VIEW_ROUTE_SCREEN");
   };
 
   React.useEffect(() => {

@@ -2,6 +2,29 @@ import { useRoute, NavigationProp } from "@react-navigation/native";
 import { View, Text, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+const buttons = [
+  {
+    name: "HOME_SCREEN",
+    label: "Home",
+    icon: "home-outline",
+  },
+  {
+    name: "MY_TICKETS_SCREEN",
+    label: "Tickets",
+    icon: "ticket-outline",
+  },
+  {
+    name: "MY_PAYMENTS_SCREEN",
+    label: "Payments",
+    icon: "card-outline",
+  },
+  {
+    name: "MY_PROFILE_SCREEN",
+    label: "Account",
+    icon: "person-outline",
+  },
+];
+
 export const BottomNav: React.FC<{ navigate: NavigationProp<any>["navigate"] }> = (
   props
 ) => {
@@ -48,32 +71,9 @@ export const BottomNav: React.FC<{ navigate: NavigationProp<any>["navigate"] }> 
     );
   };
 
-  const buttons = [
-    {
-      name: "HOME_SCREEN",
-      label: "Home",
-      icon: "home-outline",
-    },
-    {
-      name: "MY_TICKETS_SCREEN",
-      label: "Tickets",
-      icon: "ticket-outline",
-    },
-    {
-      name: "MY_PAYMENTS_SCREEN",
-      label: "Payments",
-      icon: "card-outline",
-    },
-    {
-      name: "MY_PROFILE_SCREEN",
-      label: "Account",
-      icon: "person-outline",
-    },
-  ];
-
   return (
     <View
-      className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-gray-100 px-5"
+      className="w-full h-[70px] flex flex-row justify-between items-center fixed bottom-0 border-gray-100 px-10"
       style={{ borderTopWidth: 1 }}
     >
       {buttons.map((button) => (

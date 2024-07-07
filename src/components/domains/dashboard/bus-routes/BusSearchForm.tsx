@@ -1,26 +1,26 @@
 import React from "react";
-import RNDateTimePicker, {
-  type DateTimePickerEvent,
-} from "@react-native-community/datetimepicker";
+// import RNDateTimePicker, {
+//   type DateTimePickerEvent,
+// } from "@react-native-community/datetimepicker";
 import { View, Text, Pressable, TextInput } from "react-native";
 
 export const BusSearchForm: React.FC = () => {
-  const [date, setDate] = React.useState<Date>(new Date());
+  // const [date, setDate] = React.useState<Date>(new Date());
 
-  const handleChangeDate = (event: DateTimePickerEvent) => {
-    const {
-      type,
-      nativeEvent: { timestamp, utcOffset },
-    } = event;
+  // const handleChangeDate = (event: DateTimePickerEvent) => {
+  //   const {
+  //     type,
+  //     nativeEvent: { timestamp, utcOffset },
+  //   } = event;
 
-    const date = new Date(timestamp);
+  //   const date = new Date(timestamp);
 
-    const month = ("0" + (date.getMonth() + 1)).slice(-2);
-    const day = ("0" + date.getDate()).slice(-2);
-    const year = date.getFullYear();
+  //   const month = ("0" + (date.getMonth() + 1)).slice(-2);
+  //   const day = ("0" + date.getDate()).slice(-2);
+  //   const year = date.getFullYear();
 
-    console.log(`${month}-${day}-${year}`);
-  };
+  //   return `${month}-${day}-${year}`
+  // };
 
   return (
     <View className="w-full bg-white border border-gray-200 rounded-lg p-5">

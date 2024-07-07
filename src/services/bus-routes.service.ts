@@ -13,4 +13,15 @@ export const BusRoutesService = {
         Toast.error("Failed to fetch bus routes list");
       });
   },
+
+  getRouteByRouteNo: async function (routeNo: string) {
+    return await httpClient
+      .get<BusRoute[]>("/bus-routes/route-no/" + routeNo)
+      .then((response) => response.data)
+      .catch((error) => {
+        console.log(error);
+
+        Toast.error("Failed to fetch bus routes list");
+      });
+  },
 };
