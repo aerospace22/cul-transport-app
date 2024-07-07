@@ -4,7 +4,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useAuth } from "@/hooks";
 
-export const HeaderNav = () => {
+export const HeaderNav: React.FC = () => {
   const { navigate } = useNavigation();
   const { user, logout } = useAuth();
 

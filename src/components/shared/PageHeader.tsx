@@ -6,6 +6,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 export const PageHeader: React.FC<{
   title: string;
   hideBack?: boolean;
+  children?: React.ReactNode;
 }> = (props) => {
   const { goBack } = useNavigation();
 
@@ -22,6 +23,10 @@ export const PageHeader: React.FC<{
       ) : null}
 
       <Text className="text-lg text-white font-bold">{props.title}</Text>
+
+      {props.children ? (
+        <View className="absolute right-4 top-5">{props.children}</View>
+      ) : null}
     </View>
   );
 };

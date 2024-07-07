@@ -20,8 +20,6 @@ export const ViewRouteScreen: React.FC<Props> = (props) => {
     queryFn: async () => await BusRoutesService.getRouteByRouteNo(routeNo),
   });
 
-  console.log(data);
-
   return (
     <BaseLayout headerTitle="VIEW ROUTE INFORMATION" hasFooter hasHeader>
       {isLoading && data ? <LoadingData /> : <BusRouteInformation busRoute={data!} />}
