@@ -1,6 +1,7 @@
 import React from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
+import { View } from "react-native";
 import { useFetch } from "@/hooks";
 import { BaseLayout } from "@/layouts";
 import { LoadingData } from "@/components/shared";
@@ -22,7 +23,11 @@ export const ViewRouteScreen: React.FC<Props> = (props) => {
 
   return (
     <BaseLayout headerTitle="VIEW ROUTE INFORMATION" hasFooter hasHeader>
-      {isLoading && data ? <LoadingData /> : <BusRouteInformation busRoute={data!} />}
+      {isLoading ? (
+        <LoadingData />
+      ) : (
+        <BusRouteInformation busRoute={data!} hasBuyButton />
+      )}
     </BaseLayout>
   );
 };

@@ -46,6 +46,7 @@ instance.interceptors.response.use(
     return response;
   },
   (error: AxiosError): Promise<AxiosError> => {
+    console.log(error);
     if (error.response) {
       const { status } = error.response;
 

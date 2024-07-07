@@ -11,6 +11,7 @@ import { LoadingData } from "@/components/shared";
 export const BusRouteInformation: React.FC<{
   busRoute: BusRoute;
   hasBuyButton?: boolean;
+  hideTicketPricing?: boolean;
 }> = (props) => {
   const { navigate } = useNavigation();
 
@@ -34,7 +35,7 @@ export const BusRouteInformation: React.FC<{
   }
 
   return (
-    <View className="flex-1 pt-3">
+    <View className="flex-1 relative pt-3">
       <View className="flex flex-col space-y-5 px-3">
         <View className="w-full bg-white rounded-lg">
           <View className="border-gray-100 p-2" style={{ borderWidth: 1 }}>
@@ -78,39 +79,53 @@ export const BusRouteInformation: React.FC<{
             </View>
             <View className="flex flex-row justify-between items-center">
               <Text className="text-xs text-gray-700">CUL TRANSPORT TERMINAL (EDSA)</Text>
-              <View className="bg-green-500 rounded-md p-1">
-                <Text className="text-[10px] text-white font-bold uppercase">
-                  {props.busRoute.bus ? props.busRoute.bus.type : "PREMIUM"}
-                </Text>
-              </View>
             </View>
           </View>
         </View>
 
-        <View className="w-full bg-white rounded-lg">
-          <View className="border border-gray-100 p-2" style={{ borderWidth: 1 }}>
-            <Text className="text-xs font-medium">Ticket Pricing</Text>
+        {!props.hideTicketPricing ? (
+          <View className="w-full bg-white rounded-lg">
+            <View className="border border-gray-100 p-2" style={{ borderWidth: 1 }}>
+              <Text className="text-xs font-medium">Ticket Pricing</Text>
+            </View>
+            <View className="p-2">
+              {props.busRoute.busRouteTickets.length
+                ? props.busRoute.busRouteTickets.map((ticket) => (
+                    <View
+                      className="flex flex-row items-center space-x-1"
+                      key={`bus-ticket-${ticket.type}`}
+                    >
+                      <Text>₱ {ticket.price.toFixed(2)} </Text>
+                      <View className="bg-green-500 rounded-md p-1 mr-1">
+                        <Text className="text-[10px] text-white font-bold uppercase">
+                          {ticket.type}
+                        </Text>
+                      </View>
+                      <Text className="text-xs text-gray-700">
+                        ({ticket.quantity} available)
+                      </Text>
+                    </View>
+                  ))
+                : null}
+            </View>
           </View>
-          <View className="p-2">
-            <Text className="text-lg text-gray-600 font-medium">₱ 0.00</Text>
-          </View>
-        </View>
+        ) : null}
 
         <Text className="text-[10px] text-gray-500">
           Route ID: {props.busRoute.routeNo}
         </Text>
-
-        {props.hasBuyButton ? (
-          <View className="w-full absolute bottom-3 px-2">
-            <Pressable
-              className="w-full h-[40px] bg-blue-600 justify-center items-center rounded-lg"
-              onPress={handleBuyTicket}
-            >
-              <Text className="text-white font-bold">BOOK AND BUY TICKETS</Text>
-            </Pressable>
-          </View>
-        ) : null}
       </View>
+
+      {props.hasBuyButton ? (
+        <View className="w-full absolute bottom-3 px-2">
+          <Pressable
+            className="w-full h-[40px] bg-blue-600 justify-center items-center rounded-lg"
+            onPress={handleBuyTicket}
+          >
+            <Text className="text-white font-bold">BOOK AND BUY TICKETS</Text>
+          </Pressable>
+        </View>
+      ) : null}
     </View>
   );
 };

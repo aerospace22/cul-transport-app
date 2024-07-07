@@ -1,10 +1,11 @@
 import React from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
-import { View, Text, Pressable } from "react-native";
 import { useFetch } from "@/hooks";
-import { BaseLayout } from "@/layouts";
 import { BusRoutesService } from "@/services";
+import { BaseLayout } from "@/layouts";
+import { BusRouteInformation } from "@/components/domains";
+import { EmptyData, LoadingData } from "@/components/shared";
 import type { StackParamsList } from "@/types/navigation";
 
 type Props = {
@@ -21,7 +22,13 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
 
   return (
     <BaseLayout headerTitle="TICKETS BOOKING" hasFooter hasHeader>
-      <View className="px-3"></View>
+      {isLoading ? (
+        <LoadingData />
+      ) : data ? (
+        <BusRouteInformation busRoute={data} hideTicketPricing />
+      ) : (
+        <EmptyData />
+      )}
     </BaseLayout>
   );
 };
