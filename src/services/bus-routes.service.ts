@@ -16,7 +16,7 @@ export const BusRoutesService = {
 
   getRouteByRouteNo: async function (routeNo: string) {
     return await httpClient
-      .get<BusRoute[]>("/bus-routes/route-no/" + routeNo)
+      .get<BusRoute>("/bus-routes/route-no/" + routeNo)
       .then((response) => response.data)
       .catch((error) => {
         console.log(error);

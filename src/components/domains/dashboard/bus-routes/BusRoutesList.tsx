@@ -18,11 +18,13 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
 
   const goToRoute = (routeNo: string) => {
     // @ts-ignore
-    return navigate("VIEW_ROUTE_SCREEN");
+    return navigate("VIEW_ROUTE_SCREEN", { routeNo });
   };
 
   React.useEffect(() => {
-    refetch();
+    if (props.triggerRefetch) {
+      refetch();
+    }
   }, [props.triggerRefetch]);
 
   if (isLoading) return <LoadingData />;

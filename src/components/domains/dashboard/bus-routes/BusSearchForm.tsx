@@ -1,26 +1,19 @@
 import React from "react";
-// import RNDateTimePicker, {
-//   type DateTimePickerEvent,
-// } from "@react-native-community/datetimepicker";
+import RNDateTimePicker, {
+  type DateTimePickerEvent,
+} from "@react-native-community/datetimepicker";
 import { View, Text, Pressable, TextInput } from "react-native";
 
 export const BusSearchForm: React.FC = () => {
-  // const [date, setDate] = React.useState<Date>(new Date());
+  const [date, setDate] = React.useState<Date>(new Date());
 
-  // const handleChangeDate = (event: DateTimePickerEvent) => {
-  //   const {
-  //     type,
-  //     nativeEvent: { timestamp, utcOffset },
-  //   } = event;
+  const handleChangeDate = (event: DateTimePickerEvent) => {
+    const {
+      nativeEvent: { timestamp },
+    } = event;
 
-  //   const date = new Date(timestamp);
-
-  //   const month = ("0" + (date.getMonth() + 1)).slice(-2);
-  //   const day = ("0" + date.getDate()).slice(-2);
-  //   const year = date.getFullYear();
-
-  //   return `${month}-${day}-${year}`
-  // };
+    console.log(timestamp);
+  };
 
   return (
     <View className="w-full bg-white border border-gray-200 rounded-lg p-5">
@@ -35,7 +28,7 @@ export const BusSearchForm: React.FC = () => {
       />
       <View className="w-full border border-gray-200 rounded-lg relative p-1 mb-2">
         <Text className="text-xs text-gray-400 absolute top-3 left-3">SELECT DATE</Text>
-        {/* <RNDateTimePicker mode="date" value={date} onChange={handleChangeDate} /> */}
+        <RNDateTimePicker mode="date" value={date} onChange={handleChangeDate} />
       </View>
 
       <Pressable className="w-full h-[40px] bg-red-700 rounded-lg justify-center items-center">

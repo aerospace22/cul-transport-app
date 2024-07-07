@@ -12,6 +12,7 @@ import {
   VerifyOtpScreen,
   HomeScreen,
   AllRoutesScreen,
+  ViewRouteScreen,
   MyTicketsScreen,
   MyPaymentsScreen,
   MyProfileScreen,
@@ -36,6 +37,7 @@ export const AppNavigation: React.FC = () => {
         <Screen name="VERIFY_OTP_SCREEN" component={VerifyOtpScreen} />
         <Screen name="HOME_SCREEN" component={HomeScreen} />
         <Screen name="ALL_ROUTES_SCREEN" component={AllRoutesScreen} />
+        <Screen name="VIEW_ROUTE_SCREEN" component={ViewRouteScreen} />
         <Screen name="MY_TICKETS_SCREEN" component={MyTicketsScreen} />
         <Screen name="MY_PAYMENTS_SCREEN" component={MyPaymentsScreen} />
         <Screen name="MY_PROFILE_SCREEN" component={MyProfileScreen} />
