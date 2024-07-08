@@ -54,10 +54,18 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
       <View className="flex flex-col gap-y-2">
         {data.map((route: BusRoute) => (
           <Pressable
+            className="relative"
             key={`bus-route-${route.routeNo}`}
             onPress={() => goToRoute(route.routeNo)}
           >
             <View className="min-h-[60px] bg-white rounded-lg border border-gray-100 p-3">
+              {route.busRouteTickets.length
+                ? route.busRouteTickets.map((ticket) => (
+                    <View className="items-end mb-2" key={`bus-ticket-${ticket.type}`}>
+                      <Text className="text-red-500">₱ {ticket.price.toFixed(2)} </Text>
+                    </View>
+                  ))
+                : null}
               <View className="flex flex-row justify-between">
                 <View className="flex basis-1/4">
                   <Image
@@ -85,20 +93,6 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
                     <Text className="text-[11px] text-right">
                       {formatDate(route.arrivalDate)} {route.arrivalTime}
                     </Text>
-                  </View>
-                </View>
-                <View className="flex basis-1/4">
-                  <View className="mb-2">
-                    <Text className="text-[9px] text-right text-black font-bold">
-                      PREMIUM
-                    </Text>
-                    <Text className="text-right">₱ 0.00</Text>
-                  </View>
-                  <View className="mb-2">
-                    <Text className="text-[9px] text-right text-black font-bold">
-                      ORDINARY
-                    </Text>
-                    <Text className="text-right">₱ 0.00</Text>
                   </View>
                 </View>
               </View>
