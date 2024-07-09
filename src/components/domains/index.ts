@@ -17,3 +17,8 @@ export { HeaderNav } from "./dashboard/home/HeaderNav";
 export { BusRoutesList } from "./dashboard/bus-routes/BusRoutesList";
 export { BusSearchForm } from "./dashboard/bus-routes/BusSearchForm";
 export { BusRouteInformation } from "./dashboard/bus-routes/BusRouteInformation";
+
+/**
+ * (Domains) Account Component
+ */
+export { AccountInformationForm } from "./dashboard/account/AccountInformationForm";
