@@ -62,7 +62,9 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
               {route.busRouteTickets.length
                 ? route.busRouteTickets.map((ticket) => (
                     <View className="items-end mb-2" key={`bus-ticket-${ticket.type}`}>
-                      <Text className="text-red-500">₱ {ticket.price.toFixed(2)} </Text>
+                      <Text className="text-gray-800 font-bold">
+                        ₱ {ticket.price.toFixed(2)}{" "}
+                      </Text>
                     </View>
                   ))
                 : null}
@@ -75,24 +77,28 @@ export const BusRoutesList: React.FC<{ limit?: number; triggerRefetch?: boolean 
                     className="h-16 w-16"
                   />
                 </View>
-                <View className="w-full flex flex-row basis-2/4 ">
+                <View className="w-full flex flex-row basis-3/4 ">
                   <View className="flex basis-1/2">
                     <Text className="text-[9px] text-red-500 font-bold">FROM</Text>
                     <Text className="text-xs mb-2">{route.routeFrom} </Text>
 
                     <Text className="text-[9px] text-red-500 font-bold">DEPARTURE</Text>
-                    <Text className="text-[11px]">
-                      {formatDate(route.departureDate)} {route.departureTime}
-                    </Text>
+                    <View className="flex flex-col">
+                      <Text className="text-[11px]">
+                        {formatDate(route.departureDate)}
+                      </Text>
+                      <Text className="text-[11px]">{route.departureTime}</Text>
+                    </View>
                   </View>
                   <View className="flex items-end basis-1/2">
                     <Text className="text-[9px] text-red-500 font-bold">TO</Text>
                     <Text className="text-xs text-right mb-2">{route.routeTo} </Text>
 
                     <Text className="text-[9px] text-red-500 font-bold">ARRIVAL</Text>
-                    <Text className="text-[11px] text-right">
-                      {formatDate(route.arrivalDate)} {route.arrivalTime}
-                    </Text>
+                    <View className="flex flex-col">
+                      <Text className="text-[11px]">{formatDate(route.arrivalDate)}</Text>
+                      <Text className="text-[11px]">{route.arrivalTime}</Text>
+                    </View>
                   </View>
                 </View>
               </View>

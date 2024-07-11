@@ -1,12 +1,18 @@
 import React from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RouteProp } from "@react-navigation/native";
-import { View, Text, TextInput, Pressable } from "react-native";
-import { useFetch } from "@/hooks";
-import { BusRoutesService } from "@/services";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  Linking,
+  ActivityIndicator,
+} from "react-native";
+import { useFetch, useAuth } from "@/hooks";
+import { BusRoutesService, BookingService } from "@/services";
 import { BaseLayout } from "@/layouts";
 import { BusRouteInformation } from "@/components/domains";
-import { BaseInput } from "@/components/base";
 import { EmptyData, LoadingData } from "@/components/shared";
 import type { StackParamsList } from "@/types/navigation";
 
@@ -16,23 +22,31 @@ type Props = {
 };
 
 type FormPayload = {
-  quantity: number;
+  ticketQuantity: number;
+  busRouteId?: number;
+  busRouteTicketId?: number;
+  userId: number;
 };
 
 export const BookTicketsScreen: React.FC<Props> = (props) => {
   const { routeNo } = props.route.params;
+  const { user } = useAuth();
 
   const { isLoading, data } = useFetch({
     queryFn: async () => await BusRoutesService.getRouteByRouteNo(routeNo),
   });
 
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [formPayload, setFormPayload] = React.useState<FormPayload>({
-    quantity: 0,
+    userId: +user.id,
+    busRouteId: undefined,
+    busRouteTicketId: undefined,
+    ticketQuantity: 0,
   });
 
   const getSubtotal = () => {
     // @ts-ignore
-    const total = formPayload.quantity * data?.busRouteTickets[0].price;
+    const total = formPayload.ticketQuantity * data?.busRouteTickets[0].price;
 
     return total.toFixed(2);
   };
@@ -40,20 +54,44 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
   const handleTicketQuantity = (type: "increment" | "decrement") => {
     if (type === "decrement") {
       if (
-        formPayload.quantity === 0 ||
-        formPayload.quantity === data?.busRouteTickets.length
+        formPayload.ticketQuantity === 0 ||
+        formPayload.ticketQuantity === data?.busRouteTickets.length
       )
         return;
 
-      setFormPayload({ ...formPayload, quantity: formPayload.quantity - 1 });
+      setFormPayload({ ...formPayload, ticketQuantity: formPayload.ticketQuantity - 1 });
     } else {
-      setFormPayload({ ...formPayload, quantity: formPayload.quantity + 1 });
+      setFormPayload({ ...formPayload, ticketQuantity: formPayload.ticketQuantity + 1 });
     }
   };
 
-  const handleProceedPay = () => {
-    console.log("handleProceedPay");
+  const handleProceedPay = async () => {
+    setLoading(true);
+
+    // @ts-ignore
+    return await BookingService.createBooking(formPayload, setLoading)
+      .then((result) => {
+        console.log(Object.keys(result));
+        // Linking.openURL(result.checkout_url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  React.useEffect(() => {
+    if (data) {
+      setFormPayload({
+        ...formPayload,
+        busRouteId: data.id,
+        busRouteTicketId: data.busRouteTickets[0].id,
+      });
+    }
+  }, [data]);
+
+  React.useEffect(() => {
+    console.log(formPayload);
+  }, [formPayload]);
 
   return (
     <BaseLayout headerTitle="TICKETS BOOKING" hasFooter hasHeader>
@@ -77,7 +115,7 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
                     <Text className="text-2xl text-white">-</Text>
                   </Pressable>
                   <TextInput
-                    value={formPayload.quantity.toString()}
+                    value={formPayload.ticketQuantity.toString()}
                     className="flex basis-2/4 h-[45px] text-center border border-gray-200"
                     returnKeyType="done"
                     keyboardType="numeric"
@@ -112,7 +150,13 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
               className="w-full h-[40px] bg-green-600 justify-center items-center rounded-lg"
               onPress={handleProceedPay}
             >
-              <Text className="text-white font-bold">PROCEED TO PAY (via Paymongo)</Text>
+              {loading ? (
+                <ActivityIndicator />
+              ) : (
+                <Text className="text-white font-bold">
+                  PROCEED TO PAY (via Paymongo)
+                </Text>
+              )}
             </Pressable>
           </View>
         </View>
