@@ -37,6 +37,8 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
   });
 
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [processedPay, setProcessedPay] = React.useState<boolean>(false);
+
   const [formPayload, setFormPayload] = React.useState<FormPayload>({
     userId: +user.id,
     busRouteId: undefined,
@@ -71,12 +73,16 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
     // @ts-ignore
     return await BookingService.createBooking(formPayload, setLoading)
       .then((result) => {
-        console.log(Object.keys(result));
-        // Linking.openURL(result.checkout_url);
+        Linking.openURL(result.paymentData.checkout_url);
+        setProcessedPay(true);
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleCheckBooking = () => {
+    console.log("");
   };
 
   React.useEffect(() => {
@@ -88,10 +94,6 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
       });
     }
   }, [data]);
-
-  React.useEffect(() => {
-    console.log(formPayload);
-  }, [formPayload]);
 
   return (
     <BaseLayout headerTitle="TICKETS BOOKING" hasFooter hasHeader>
@@ -146,18 +148,27 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
           </View>
 
           <View className="px-3 bottom-4">
-            <Pressable
-              className="w-full h-[40px] bg-green-600 justify-center items-center rounded-lg"
-              onPress={handleProceedPay}
-            >
-              {loading ? (
-                <ActivityIndicator />
-              ) : (
-                <Text className="text-white font-bold">
-                  PROCEED TO PAY (via Paymongo)
-                </Text>
-              )}
-            </Pressable>
+            {!processedPay ? (
+              <Pressable
+                className="w-full h-[40px] bg-green-600 justify-center items-center rounded-lg"
+                onPress={handleProceedPay}
+              >
+                {loading && !processedPay ? (
+                  <ActivityIndicator color="#fff" />
+                ) : (
+                  <Text className="text-white font-bold">
+                    PROCEED TO PAY (via Paymongo)
+                  </Text>
+                )}
+              </Pressable>
+            ) : (
+              <Pressable
+                className="w-full h-[40px] bg-yellow-600 justify-center items-center rounded-lg"
+                onPress={handleCheckBooking}
+              >
+                <Text className="text-white font-bold">VIEW TICKET BOOKING STATUS</Text>
+              </Pressable>
+            )}
           </View>
         </View>
       ) : (
