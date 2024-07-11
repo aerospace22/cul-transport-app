@@ -15,4 +15,7 @@ export type StackParamsList = {
   BOOK_TICKETS_SCREEN: {
     routeNo: string;
   };
+  VIEW_BOOKING_SCREEN: {
+    bookingNo: string;
+  };
 };

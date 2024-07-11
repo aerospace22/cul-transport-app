@@ -25,4 +25,8 @@ export const BookingService = {
       })
       .finally(() => setLoading(false));
   },
+
+  getBookingInformationByNo: async function (bookingNo: string) {
+    //
+  },
 };
