@@ -73,7 +73,7 @@ export const BookTicketsScreen: React.FC<Props> = (props) => {
     // @ts-ignore
     return await BookingService.createBooking(formPayload, setLoading)
       .then((result) => {
-        Linking.openURL(result.paymentData.checkout_url);
+        Linking.openURL(result.checkout_url);
         setProcessedPay(true);
       })
       .catch((error) => {
