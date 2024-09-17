@@ -163,8 +163,14 @@ export const HomeScreen: React.FC<TScreenProps> = (props) => {
                   </View>
                 </View>
               ))
+            ) : !busRoutes.length ? (
+              <Text className="text-xs text-gray-700 text-center mt-10">
+                No data available
+              </Text>
             ) : (
-              <Text className="text-xs text-gray-700 text-center mt-10">Fetching</Text>
+              <Text className="text-xs text-gray-700 text-center mt-10">
+                There are no data available
+              </Text>
             )}
           </View>
 
