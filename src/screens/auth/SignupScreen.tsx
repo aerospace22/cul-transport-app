@@ -24,6 +24,8 @@ export const SignupScreen: React.FC<TScreenProps> = (props) => {
         <FontAwesome name="long-arrow-left" size={24} color="black" />
       </Pressable>
 
+      <View className="h-[100px]" />
+
       <View className="mb-5">
         <Text className="text-2xl font-semibold mb-2">Sign Up</Text>
         <Text className="text-xs text-gray-700">

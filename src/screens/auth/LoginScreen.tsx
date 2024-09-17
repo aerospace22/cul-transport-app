@@ -16,6 +16,8 @@ export const LoginScreen: React.FC<TScreenProps> = (props) => {
 
   return (
     <View className="flex-1 bg-slate-50 px-5">
+      <View className="h-[100px]" />
+
       <View className="mb-5">
         <Text className="text-2xl font-semibold mb-2">Log In</Text>
         <Text className="text-xs text-gray-700">Book your trip with us!</Text>
